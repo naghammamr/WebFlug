@@ -1,0 +1,74 @@
+﻿@model WebFlug.Models.Trips
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trip</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FromWhere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromWhere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToWhere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToWhere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TripCreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TripCreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdditionalDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalDetails)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Trip_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

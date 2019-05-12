@@ -49,9 +49,12 @@ namespace WebFlug.Models
     public class LoginViewModel
     {
         [Required]
+        public string UserName { get; set; }
+
+        /*[Required]
         [Display(Name = "Email")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; }*/
 
         [Required]
         [DataType(DataType.Password)]
@@ -68,6 +71,41 @@ namespace WebFlug.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        //
+        //nagham
+        [Required]
+        [Display(Name = "User Name")]
+        [StringLength(50)]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        [StringLength(50)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        [StringLength(50)]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string Phone { get; set; }
+
+        [Required]
+        [Display(Name = "City")]
+        [StringLength(50)]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "Country")]
+        [StringLength(50)]
+        public string Country { get; set; }
+
+
+        //end Nagham
+        //
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

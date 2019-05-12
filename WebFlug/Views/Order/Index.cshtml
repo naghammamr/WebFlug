@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebFlug.Models.Orders>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @style = " color:darkorange;" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliverDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderSatatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliverDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderSatatus)
+        </td>
+        <td>
+            <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ProductImage)" class="thumbnail" style="width:100px" ; height:100px" />
+        </td>
+
+        <td>
+            @Html.ActionLink("Order Details", "Details", new { id = item.Order_Id })
+           
+        </td>
+    </tr>
+}
+
+</table>

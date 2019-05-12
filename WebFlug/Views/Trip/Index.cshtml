@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebFlug.Models.Trips>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FromWhere)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToWhere)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripCreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketPhoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdditionalDetails)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromWhere)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToWhere)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripCreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketPhoto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdditionalDetails)
+        </td>
+
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.Trip_Id }) 
+        </td>
+    </tr>
+}
+
+</table>
