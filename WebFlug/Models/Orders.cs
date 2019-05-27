@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebFlug.Models
 {
-    //[Bind(Exclude = "Order_Id")]
+    
     public class Orders
     {
         [Key]

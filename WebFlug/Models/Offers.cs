@@ -17,7 +17,6 @@ namespace WebFlug.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime CreationDate { get; set; }
 
-        [Required]
         [StringLength(20)]
         public string OfferSatatus { get; set; }
 
@@ -36,5 +35,6 @@ namespace WebFlug.Models
         
         [ForeignKey("UserId")]
         public virtual ApplicationUser user { get; set; }
+
     }
 }

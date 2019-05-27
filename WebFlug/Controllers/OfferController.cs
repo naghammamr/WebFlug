@@ -19,6 +19,14 @@ namespace WebFlug.Controllers
             return View(offers.ToList());
         }
 
+        // GET: MyOffers
+        public ActionResult MyOffers()
+        {
+            var UserId = User.Identity.GetUserId();
+            var offers = db.offers.Where(a => a.UserId == UserId);
+            return View(offers.ToList());
+        }
+
         // GET: Offer/MakeOffer/5
         public ActionResult MakeOffer()
         {
@@ -73,14 +81,7 @@ namespace WebFlug.Controllers
             return View(offers);
         }
         
-
-        // GET: Offer/Create
-        public ActionResult Create()
-        {
-            //ViewBag.OrderId = new SelectList(db.orders, "Order_Id", "OrderNumber");
-            return View();
-        }
-
+        
      
 
         // GET: Offer/Edit/5
@@ -107,7 +108,7 @@ namespace WebFlug.Controllers
             if (ModelState.IsValid)
             {
                 var userID = User.Identity.GetUserId();
-                //offers.UserId = userID;
+                offers.UserId = userID;
 
                 Offers obj = new Offers { Offer_Id = offers.Offer_Id };
                 db.offers.Attach(obj);
@@ -115,6 +116,8 @@ namespace WebFlug.Controllers
                 obj.Order_Id = offers.Order_Id;
                 obj.CreationDate = offers.CreationDate;
                 obj.OfferSatatus = offers.OfferSatatus;
+
+                //offers.CreationDate = DateTime.Now;
 
                 db.Entry(offers).State = EntityState.Modified;
                 db.SaveChanges();
