@@ -186,13 +186,29 @@
     <Compile Include="Migrations\201905101425055_InitialMigration.Designer.cs">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905101433062_aa.cs" />
-    <Compile Include="Migrations\201905101433062_aa.Designer.cs">
-      <DependentUpon>201905101433062_aa.cs</DependentUpon>
+    <Compile Include="Migrations\201905271226482_frst.cs" />
+    <Compile Include="Migrations\201905271226482_frst.Designer.cs">
+      <DependentUpon>201905271226482_frst.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905101440589_d.cs" />
-    <Compile Include="Migrations\201905101440589_d.Designer.cs">
-      <DependentUpon>201905101440589_d.cs</DependentUpon>
+    <Compile Include="Migrations\201905271228144_la.cs" />
+    <Compile Include="Migrations\201905271228144_la.Designer.cs">
+      <DependentUpon>201905271228144_la.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905271234176_la1.cs" />
+    <Compile Include="Migrations\201905271234176_la1.Designer.cs">
+      <DependentUpon>201905271234176_la1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905271303135_k.cs" />
+    <Compile Include="Migrations\201905271303135_k.Designer.cs">
+      <DependentUpon>201905271303135_k.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905271314274_testaya.cs" />
+    <Compile Include="Migrations\201905271314274_testaya.Designer.cs">
+      <DependentUpon>201905271314274_testaya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905271352056_deleteeasd.cs" />
+    <Compile Include="Migrations\201905271352056_deleteeasd.Designer.cs">
+      <DependentUpon>201905271352056_deleteeasd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -272,12 +288,16 @@
     <Content Include="Views\Trip\Delete.cshtml" />
     <Content Include="Views\Order\Create.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
-    <Content Include="Views\Order\MakeOffer.cshtml" />
+    <Content Include="Views\Offer\Index.cshtml" />
+    <Content Include="Views\Offer\Details.cshtml" />
+    <Content Include="Views\Offer\Edit.cshtml" />
+    <Content Include="Views\Offer\Delete.cshtml" />
+    <Content Include="Views\Offer\MakeOffer.cshtml" />
+    <Content Include="Views\Order\Edit2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\Offer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -296,11 +316,23 @@
     <EmbeddedResource Include="Migrations\201905101425055_InitialMigration.resx">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905101433062_aa.resx">
-      <DependentUpon>201905101433062_aa.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905271226482_frst.resx">
+      <DependentUpon>201905271226482_frst.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905101440589_d.resx">
-      <DependentUpon>201905101440589_d.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905271228144_la.resx">
+      <DependentUpon>201905271228144_la.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271234176_la1.resx">
+      <DependentUpon>201905271234176_la1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271303135_k.resx">
+      <DependentUpon>201905271303135_k.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271314274_testaya.resx">
+      <DependentUpon>201905271314274_testaya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271352056_deleteeasd.resx">
+      <DependentUpon>201905271352056_deleteeasd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

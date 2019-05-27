@@ -19,22 +19,6 @@ namespace WebFlug.Controllers
             return View(offers.ToList());
         }
 
-        // GET: Offer/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Offers offers = db.offers.Find(id);
-            if (offers == null)
-            {
-                return HttpNotFound();
-            }
-            return View(offers);
-        }
-        
-        
         // GET: Offer/MakeOffer/5
         public ActionResult MakeOffer()
         {
@@ -43,10 +27,11 @@ namespace WebFlug.Controllers
 
         // POST: Offer/MakeOffer/5
         [HttpPost]
-        public ActionResult MakeOffer(string TravellerReward,DateTime DeliverDate)
+        public ActionResult MakeOffer(string TravellerReward, DateTime DeliverDate)
         {
             var userID = User.Identity.GetUserId();
             var orderID = (int)Session["Order_Id"];
+
             var offer = new Offers();
 
             if (ModelState.IsValid)
@@ -68,8 +53,24 @@ namespace WebFlug.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-      
+
             return View();
+        }
+
+    
+        // GET: Offer/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Offers offers = db.offers.Find(id);
+            if (offers == null)
+            {
+                return HttpNotFound();
+            }
+            return View(offers);
         }
         
 
@@ -80,31 +81,7 @@ namespace WebFlug.Controllers
             return View();
         }
 
-        // POST: Offer/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TravellerReward,DeliverDate")] Offers offer)
-        {
-            //var order = new Orders();
-
-            if (ModelState.IsValid)
-            {
-
-
-                offer.OfferSatatus = "Pending";
-
-                DateTime today = DateTime.Today;
-                today.ToString("dd-MM-yyyy");
-                offer.CreationDate = today;
-
-                db.offers.Add(offer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            //ViewBag.OrderId = new SelectList(db.orders, "Order_Id", "OrderNumber", offer.OrderId);
-            return View(offer);
-        }
+     
 
         // GET: Offer/Edit/5
         public ActionResult Edit(int? id)
@@ -118,24 +95,32 @@ namespace WebFlug.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.OrderId = new SelectList(db.orders, "Order_Id", "OrderNumber", offers.Order_Id);
+           
             return View(offers);
         }
 
         // POST: Offer/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Offer_Id,TravellerReward,CreationDate,OfferSatatus,DeliverDate,OrderId,Email")] Offers offers)
+        public ActionResult Edit(Offers offers)
         {
             if (ModelState.IsValid)
             {
+                var userID = User.Identity.GetUserId();
+                //offers.UserId = userID;
+
+                Offers obj = new Offers { Offer_Id = offers.Offer_Id };
+                db.offers.Attach(obj);
+
+                obj.Order_Id = offers.Order_Id;
+                obj.CreationDate = offers.CreationDate;
+                obj.OfferSatatus = offers.OfferSatatus;
+
                 db.Entry(offers).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OrderId = new SelectList(db.orders, "Order_Id", "OrderNumber", offers.Order_Id);
+            
             return View(offers);
         }
 
@@ -163,6 +148,14 @@ namespace WebFlug.Controllers
             db.offers.Remove(offers);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AcceptOffer(int? id)
+        {
+            Orders accept = db.orders.Find(id);
+            accept.OrderSatatus = "InProgress";
+
+            return Redirect("Index");
         }
 
         protected override void Dispose(bool disposing)

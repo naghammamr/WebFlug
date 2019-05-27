@@ -7,13 +7,13 @@ namespace WebFlug.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class d : IMigrationMetadata
+    public sealed partial class testaya : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(d));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(testaya));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905101440589_d"; }
+            get { return "201905271314274_testaya"; }
         }
         
         string IMigrationMetadata.Source

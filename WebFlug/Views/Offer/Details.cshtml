@@ -1,0 +1,58 @@
+﻿@model WebFlug.Models.Offers
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Offers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.orders.OrderNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.orders.OrderNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TravellerReward)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravellerReward)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OfferSatatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OfferSatatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliverDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliverDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Offer_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Web.Mvc;
 
 namespace WebFlug.Models
 {
@@ -27,7 +25,7 @@ namespace WebFlug.Models
         public decimal ProductPrice { get; set; }
 
         [Required(ErrorMessage = "Quantity is required")]
-        [Range(1, 10, ErrorMessage = "Quantity must be between 1 and 10")]
+        [Range(1, 30, ErrorMessage = "Quantity must be between 1 and 30")]
         public int ProductQuantity { get; set; }
 
         [DisplayName("Item Picture")]
@@ -54,7 +52,6 @@ namespace WebFlug.Models
         [DisplayName("Order Status")]
         public string OrderSatatus { get; set; }
 
-        [Required(ErrorMessage = "Choose a date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime CreationDate { get; set; }
@@ -62,14 +59,9 @@ namespace WebFlug.Models
         /// 
         /// /////////////////////////////////////
         /// 
-        
+
         [EmailAddress]
         public string Email { get; set; }
-
-        public String UserId { get; set; }
-
-        [ForeignKey("UserId")]
-        public virtual ApplicationUser user { get; set; }
 
     }
 }

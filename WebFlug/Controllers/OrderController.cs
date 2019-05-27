@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -33,7 +34,7 @@ namespace WebFlug.Controllers
 
         public static string GetUniqueKey(int size)
         {
-            char[] chars = "ABLNOPSTUWXYZ1234567890".ToCharArray();
+            char[] chars = "ABKHLNOPSTUWXYZ1234567890".ToCharArray();
             byte[] data = new byte[size];
             using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
             {
@@ -64,31 +65,25 @@ namespace WebFlug.Controllers
             return View();
         }
 
-        //Bind-- to protect against over-posting in create scenarios
         // POST: Order/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]//prevent cross-site request forgery attacks
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Orders order, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                string path = Path.Combine(Server.MapPath("~/Uploads"), upload.FileName);
-                upload.SaveAs(path);
-                order.ProductImage = upload.FileName;
-
-                var userID = User.Identity.GetUserId();
-                order.UserId = userID;
+                order.Email = User.Identity.Name;
 
                 string number = GetUniqueKey(6);
                 order.OrderNumber = number;
 
-                order.Email = User.Identity.Name;
+                string path = Path.Combine(Server.MapPath("~/Uploads"), upload.FileName);
+                upload.SaveAs(path);
+                order.ProductImage = upload.FileName;
+
+                order.CreationDate = DateTime.Now;
 
                 order.OrderSatatus = "Requested";
-
-                DateTime today = DateTime.Today;
-                today.ToString("dd-MM-yyyy");
-                order.CreationDate = today;
 
                 db.orders.Add(order);
                 db.SaveChanges();
@@ -143,6 +138,11 @@ namespace WebFlug.Controllers
                     upload.SaveAs(path);
                     order.ProductImage = upload.FileName;
                 }
+
+                order.CreationDate = DateTime.Now;
+
+                order.Email = User.Identity.Name;
+
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -175,55 +175,6 @@ namespace WebFlug.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        
-        // GET: Offer/MakeOffer/5
-        public ActionResult MakeOffer()
-        {
-            return View();
-        }
-
-        // POST: Offer/MakeOffer/5
-        [HttpPost]
-        public ActionResult MakeOffer(string TravellerReward, DateTime DeliverDate)
-        {
-            var userID = User.Identity.GetUserId();
-            var orderID = (int)Session["Order_Id"];
-
-            var offer = new Offers();
-
-            if (ModelState.IsValid)
-            {
-                offer.Order_Id = orderID;
-
-                offer.UserId = userID;
-
-                offer.OfferSatatus = "Pending";
-
-                DateTime today = DateTime.Today;
-                today.ToString("dd-MM-yyyy");
-                offer.CreationDate = today;
-
-                offer.TravellerReward = TravellerReward;
-                offer.DeliverDate = DeliverDate;
-
-                db.offers.Add(offer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            
-            return View();
-        }
-        
-
-
-        public ActionResult AcceptOffer(int? id)
-        {
-            Orders accept = db.orders.Find(id);
-            accept.OrderSatatus = "InProgress";
-
-            return Redirect("Index");
-        }
-
 
         protected override void Dispose(bool disposing)
         {
