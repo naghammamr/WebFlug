@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201905271841315_aln.Designer.cs">
       <DependentUpon>201905271841315_aln.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905271909020_no.cs" />
+    <Compile Include="Migrations\201905271909020_no.Designer.cs">
+      <DependentUpon>201905271909020_no.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -298,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905271841315_aln.resx">
       <DependentUpon>201905271841315_aln.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271909020_no.resx">
+      <DependentUpon>201905271909020_no.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

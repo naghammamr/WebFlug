@@ -14,11 +14,11 @@ namespace WebFlug
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            CreateRoles();
-            CreateAdmin();
+          //  CreateRoles();
+            //CreateAdmin();
         }
 
-        public void CreateAdmin()
+        /*public void CreateAdmin()
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
             var user = new ApplicationUser();
@@ -30,7 +30,7 @@ namespace WebFlug
                 userManager.AddToRole(user.Id, "Admin");
             }
         }
-
+        
         public void CreateRoles()
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
@@ -47,6 +47,6 @@ namespace WebFlug
                 role.Name = "User";
                 roleManager.Create(role);
             }
-        }
+        }*/
     }
 }

@@ -48,15 +48,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TicketPhoto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
+            <img src="~/Uploads/@Html.DisplayFor(modelItem => Model.TicketPhoto)" class="thumbnail" style="width:100px" ; height:100px" />
         </dd>
 
         <dt>

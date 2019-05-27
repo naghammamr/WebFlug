@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using WebFlug.Models;
 
@@ -36,13 +39,23 @@ namespace WebFlug.Controllers
         // POST: Trip/Create
         [HttpPost]
         [ValidateAntiForgeryToken]//prevent cross-site request forgery attacks
-        public ActionResult Create([Bind(Include = "Trip_Id,FromWhere,ToWhere,TripCreationDate,DepartDate,TicketPhoto,AdditionalDetails")] Trips trip)
+        public ActionResult Create(Trips trip, HttpPostedFileBase upload)
         {
+            var userID = User.Identity.GetUserId();
+
               if (ModelState.IsValid)
               {
-                  db.trips.Add(trip);
-                  db.SaveChanges();
-                  return RedirectToAction("Index");
+                trip.UserId = userID;
+
+                string path = Path.Combine(Server.MapPath("~/Uploads"), upload.FileName);
+                upload.SaveAs(path);
+                trip.TicketPhoto = upload.FileName;
+
+                trip.TripCreationDate = DateTime.Now;
+
+                db.trips.Add(trip);
+                db.SaveChanges();
+                return RedirectToAction("Index");
               }
 
               return View(trip);
@@ -51,10 +64,9 @@ namespace WebFlug.Controllers
         //Get : user trips 
         public ActionResult MyTrips()
         {
-            var user = User.Identity.GetUserId();
-            var currentEmail = db.Users.Find(user);
-            var mytrips = db.trips.Where(t => t.Email == currentEmail.Email);
-            return View(mytrips);
+            var UserId = User.Identity.GetUserId();
+            var trips = db.trips.Where(a => a.UserId == UserId);
+            return View(trips.ToList());
         }
 
         // GET: Trip/Details/5

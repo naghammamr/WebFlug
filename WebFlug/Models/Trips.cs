@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebFlug.Models
 {
@@ -19,22 +17,25 @@ namespace WebFlug.Models
         [StringLength(70)]
         public string ToWhere { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Choose a date")]
+        [DataType(DataType.Date)]
         public DateTime DepartDate { get; set; }
 
-        [Required]
+        [DataType(DataType.Date)]
         public System.DateTime TripCreationDate { get; set; }
 
         /// 
         /// /////////////////////////////////////
         /// 
 
-        [Required]
         public string TicketPhoto { get; set; }
 
-        [EmailAddress]
-        public string Email { get; set; }
-
         public string AdditionalDetails { get; set; }
+
+        // Foreign key 
+        public String UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser user { get; set; }
     }
 }
