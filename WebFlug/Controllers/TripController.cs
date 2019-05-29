@@ -102,10 +102,18 @@ namespace WebFlug.Controllers
         // POST: Trip/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Trip_Id,FromWhere,ToWhere,TripCreationDate,DepartDate,TicketPhoto,AdditionalDetails")] Trips trip)
+        public ActionResult Edit([Bind(Include = "Trip_Id,FromWhere,ToWhere,TripCreationDate,DepartDate,TicketPhoto,AdditionalDetails")] Trips trip, HttpPostedFileBase upload)
         {
+            if (upload != null)
+            {
+                string path = Path.Combine(Server.MapPath("~/Uploads"), upload.FileName);
+                upload.SaveAs(path);
+                trip.TicketPhoto = upload.FileName;
+            }
+
             if (ModelState.IsValid)
             {
+                trip.TripCreationDate = DateTime.Now;
                 db.Entry(trip).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

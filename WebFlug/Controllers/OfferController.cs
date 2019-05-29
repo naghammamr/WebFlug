@@ -80,9 +80,6 @@ namespace WebFlug.Controllers
             }
             return View(offers);
         }
-        
-        
-     
 
         // GET: Offer/Edit/5
         public ActionResult Edit(int? id)
@@ -107,20 +104,13 @@ namespace WebFlug.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userID = User.Identity.GetUserId();
-                offers.UserId = userID;
+                offers.CreationDate = DateTime.Now;
 
-                Offers obj = new Offers { Offer_Id = offers.Offer_Id };
-                db.offers.Attach(obj);
-
-                obj.Order_Id = offers.Order_Id;
-                obj.CreationDate = offers.CreationDate;
-                obj.OfferSatatus = offers.OfferSatatus;
-
-                //offers.CreationDate = DateTime.Now;
+                offers.OfferSatatus = "Pending";
 
                 db.Entry(offers).State = EntityState.Modified;
                 db.SaveChanges();
+                ViewBag.Message = "Edited Successfully ";
                 return RedirectToAction("Index");
             }
             

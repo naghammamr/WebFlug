@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -48,15 +47,12 @@ namespace WebFlug.Controllers
             return result.ToString();
         }
 
-
-
         //show old orders
         public ActionResult ViewOldOrders()
         {
-            var user = User.Identity.GetUserId();
-            var currentEmail = db.Users.Find(user);
-            var myorders = db.orders.Where(e => e.Email == currentEmail.Email);
-            return View(myorders);
+            var UserId = User.Identity.GetUserId();
+            var myorders = db.orders.Where(a => a.UserId == UserId);
+            return View(myorders.ToList());
         }
 
         // GET: Order/Create
@@ -72,7 +68,8 @@ namespace WebFlug.Controllers
         {
             if (ModelState.IsValid)
             {
-                order.Email = User.Identity.Name;
+                var userID = User.Identity.GetUserId();
+                order.UserId = userID;
 
                 string number = GetUniqueKey(6);
                 order.OrderNumber = number;
@@ -92,7 +89,6 @@ namespace WebFlug.Controllers
 
             return View(order);
         }
-
 
         // GET: Order/Details/5
         public ActionResult Details(int? id)
@@ -128,7 +124,7 @@ namespace WebFlug.Controllers
         // POST: Order/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Order_Id,OrderNumber,ProductName,ProductDetails,ProductPrice,ProductQuantity,ProductImage,ProductLink,ProductWeight,Deliverfrom,DeliverToDeliverDate,AdditionalDetails,OrderSatatus,CreationDate,Email")] Orders order, HttpPostedFileBase upload)
+        public ActionResult Edit(Orders order, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -141,10 +137,10 @@ namespace WebFlug.Controllers
 
                 order.CreationDate = DateTime.Now;
 
-                order.Email = User.Identity.Name;
-
+                order.OrderSatatus = "Requested";
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
+                ViewBag.Message = "Edited Successfully ";
                 return RedirectToAction("Index");
             }
             return View(order);
@@ -176,6 +172,40 @@ namespace WebFlug.Controllers
             return RedirectToAction("Index");
         }
 
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AcceptOffer(Orders order)
+        {
+            if (ModelState.IsValid)
+            {
+                /*var offer = new Offers();
+                offer.OfferSatatus = "Accepted";*/
+                order.OrderSatatus = "InProgress";
+            }
+
+            db.Entry(order).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -184,5 +214,6 @@ namespace WebFlug.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

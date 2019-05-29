@@ -178,6 +178,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\TripController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +194,14 @@
     <Compile Include="Migrations\201905271909020_no.cs" />
     <Compile Include="Migrations\201905271909020_no.Designer.cs">
       <DependentUpon>201905271909020_no.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905281218079_adda.cs" />
+    <Compile Include="Migrations\201905281218079_adda.Designer.cs">
+      <DependentUpon>201905281218079_adda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905281223599_dadad.cs" />
+    <Compile Include="Migrations\201905281223599_dadad.Designer.cs">
+      <DependentUpon>201905281223599_dadad.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -278,10 +287,12 @@
     <Content Include="Views\Offer\Delete.cshtml" />
     <Content Include="Views\Offer\MakeOffer.cshtml" />
     <Content Include="Views\Offer\MyOffers.cshtml" />
+    <Content Include="Views\Order\AcceptOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
+    <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -305,6 +316,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905271909020_no.resx">
       <DependentUpon>201905271909020_no.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281218079_adda.resx">
+      <DependentUpon>201905281218079_adda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281223599_dadad.resx">
+      <DependentUpon>201905281223599_dadad.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

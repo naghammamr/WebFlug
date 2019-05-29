@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebFlug.Models
 {
@@ -44,7 +45,6 @@ namespace WebFlug.Models
 
         [Required(ErrorMessage = "Choose a date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DeliverDate { get; set; }
 
         public string AdditionalDetails { get; set; }
@@ -53,15 +53,13 @@ namespace WebFlug.Models
         public string OrderSatatus { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime CreationDate { get; set; }
 
-        /// 
-        /// /////////////////////////////////////
-        /// 
+        //ForeignKey
+        public String UserId { get; set; }
 
-        [EmailAddress]
-        public string Email { get; set; }
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser user { get; set; }
 
     }
 }
