@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -61,5 +62,11 @@ namespace WebFlug.Models
         [ForeignKey("UserId")]
         public virtual ApplicationUser user { get; set; }
 
+        public virtual ICollection<Offers> offers { get; set; }
+
+        public Orders()
+        {
+            this.offers = new HashSet<Offers>();
+        }
     }
 }

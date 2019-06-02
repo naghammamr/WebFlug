@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using WebFlug.Models;
+
 
 namespace WebFlug.Controllers
 {
@@ -22,6 +24,13 @@ namespace WebFlug.Controllers
         {
             var orders = db.orders.ToList();
             return orders;
+        }
+
+        // GET: Offer
+        public IEnumerable<Offers> GetOffers()
+        {
+            var offers = db.offers.ToList();
+            return offers;
         }
 
         public ActionResult Index()
@@ -188,23 +197,12 @@ namespace WebFlug.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
+        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+            
+        
 
         protected override void Dispose(bool disposing)
         {

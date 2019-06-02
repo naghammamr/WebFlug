@@ -41,5 +41,6 @@ namespace WebFlug.Models
         {
             return new ApplicationDbContext();
         }
+        
     }
 }

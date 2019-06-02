@@ -187,21 +187,13 @@
     <Compile Include="Migrations\201905101425055_InitialMigration.Designer.cs">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905271841315_aln.cs" />
-    <Compile Include="Migrations\201905271841315_aln.Designer.cs">
-      <DependentUpon>201905271841315_aln.cs</DependentUpon>
+    <Compile Include="Migrations\201906012322468_j.cs" />
+    <Compile Include="Migrations\201906012322468_j.Designer.cs">
+      <DependentUpon>201906012322468_j.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905271909020_no.cs" />
-    <Compile Include="Migrations\201905271909020_no.Designer.cs">
-      <DependentUpon>201905271909020_no.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905281218079_adda.cs" />
-    <Compile Include="Migrations\201905281218079_adda.Designer.cs">
-      <DependentUpon>201905281218079_adda.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905281223599_dadad.cs" />
-    <Compile Include="Migrations\201905281223599_dadad.Designer.cs">
-      <DependentUpon>201905281223599_dadad.cs</DependentUpon>
+    <Compile Include="Migrations\201906012326466_a.cs" />
+    <Compile Include="Migrations\201906012326466_a.Designer.cs">
+      <DependentUpon>201906012326466_a.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -212,6 +204,7 @@
     <Compile Include="Models\Trips.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\OrdersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -288,6 +281,7 @@
     <Content Include="Views\Offer\MakeOffer.cshtml" />
     <Content Include="Views\Offer\MyOffers.cshtml" />
     <Content Include="Views\Order\AcceptOffer.cshtml" />
+    <Content Include="Views\Offer\offersOForder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,17 +305,11 @@
     <EmbeddedResource Include="Migrations\201905101425055_InitialMigration.resx">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271841315_aln.resx">
-      <DependentUpon>201905271841315_aln.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906012322468_j.resx">
+      <DependentUpon>201906012322468_j.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271909020_no.resx">
-      <DependentUpon>201905271909020_no.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905281218079_adda.resx">
-      <DependentUpon>201905281218079_adda.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905281223599_dadad.resx">
-      <DependentUpon>201905281223599_dadad.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906012326466_a.resx">
+      <DependentUpon>201906012326466_a.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,9 +11,15 @@
 </p>
 <table class="table">
     <tr>
+
         <th>
             @Html.DisplayNameFor(model => model.orders.OrderNumber)
         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.orders.UserId)
+        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.TravellerReward)
         </th>
@@ -35,6 +41,9 @@
             @Html.DisplayFor(modelItem => item.orders.OrderNumber)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.user.FirstName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.TravellerReward)
         </td>
         <td>
@@ -47,9 +56,9 @@
             @Html.DisplayFor(modelItem => item.DeliverDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Offer_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Offer_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Offer_Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Offer_Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Offer_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Offer_Id })
         </td>
     </tr>
 }

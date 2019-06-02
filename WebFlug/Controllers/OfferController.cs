@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using WebFlug.Models;
+using WebFlug.ViewModels;
 
 namespace WebFlug.Controllers
 {
@@ -142,15 +144,31 @@ namespace WebFlug.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
 
-        public ActionResult AcceptOffer(int? id)
+        public ActionResult offersOForder()
         {
-            Orders accept = db.orders.Find(id);
-            accept.OrderSatatus = "InProgress";
+            var orderID = (int)Session["Order_Id"];
 
-            return Redirect("Index");
+            var UserId = User.Identity.GetUserId();
+            var Orders = db.orders.Where(a => a.UserId == UserId);
+            var Offers = db.offers.Where(a => a.UserId == UserId);
+
+            var offers = Offers.ToList();
+            //var offers = db.offers.ToList();
+
+            Orders orders = new Orders();
+
+            OrdersViewModel viewmodel = new OrdersViewModel
+            {
+                order = orders,
+                Offers = offers
+            };
+
+            return View(viewmodel);
         }
 
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

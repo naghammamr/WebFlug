@@ -31,7 +31,7 @@ namespace WebFlug.Models
         [ForeignKey("Order_Id")]
         public virtual Orders orders { get; set; }
         
-        public String UserId { get; set; }
+        public string UserId { get; set; }
         
         [ForeignKey("UserId")]
         public virtual ApplicationUser user { get; set; }
