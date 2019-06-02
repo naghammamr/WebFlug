@@ -146,19 +146,14 @@ namespace WebFlug.Controllers
         }
         
 
-        public ActionResult offersOForder()
+        public ActionResult offersOForder(int? id)
         {
-            var orderID = (int)Session["Order_Id"];
-
             var UserId = User.Identity.GetUserId();
-            var Orders = db.orders.Where(a => a.UserId == UserId);
-            var Offers = db.offers.Where(a => a.UserId == UserId);
+            var Orders = db.orders.Where(a => a.UserId == UserId).ToList();
 
-            var offers = Offers.ToList();
-            //var offers = db.offers.ToList();
-
-            Orders orders = new Orders();
-
+            Orders orders = db.orders.Find(id);
+            var offers = db.offers.Where(x => x.Order_Id == id).ToList();
+            
             OrdersViewModel viewmodel = new OrdersViewModel
             {
                 order = orders,

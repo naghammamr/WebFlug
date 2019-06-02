@@ -11,7 +11,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using WebFlug.Models;
-
+using WebFlug.ViewModels;
 
 namespace WebFlug.Controllers
 {
@@ -197,12 +197,27 @@ namespace WebFlug.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        
-        
 
-        
-            
-        
+
+        public ActionResult offersOForder(int? id)
+        {
+            var UserId = User.Identity.GetUserId();
+            var Orders = db.orders.Where(a => a.UserId == UserId).ToList();
+
+            Orders orders = db.orders.Find(id);
+            var offers = db.offers.Where(x => x.Order_Id == id).ToList();
+
+            OrdersViewModel viewmodel = new OrdersViewModel
+            {
+                order = orders,
+                Offers = offers
+            };
+
+            return View(viewmodel);
+        }
+
+
+
 
         protected override void Dispose(bool disposing)
         {

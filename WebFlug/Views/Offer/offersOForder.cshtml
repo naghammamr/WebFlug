@@ -3,44 +3,22 @@
 @{
     ViewBag.Title = "offers of orders";
 }
+<h3>
+    @Model.order.OrderNumber
+</h3>
 
-
-@if (Model.Offers.Count == 0)
-{
-    <text> No offers for this order</text>
-}
-else
-{
-<table class="table">
-    <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.order.OrderNumber)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Offers)
-        </th>
-        
-        <th></th>
-    </tr>
-    
-    @foreach (var item in Model.Offers)
+    @if (Model.Offers.Count == 0)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.orders.OrderNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TravellerReward)
-            </td>
-            <td>
-                @Html.ActionLink("Accept ", "")|
-                @Html.ActionLink("Reject", "") 
-                
-            </td>
-        </tr>
+        <text> No offers for this order</text>
     }
+    else
+    {   <h4>Offers Count = @Model.Offers.Count </h4>
+        
+        <ui>
+            @foreach (var offer in Model.Offers)
+            {
 
-</table>
-}
+                <li>@offer.TravellerReward</li>
+            }
+        </ui>
+    }

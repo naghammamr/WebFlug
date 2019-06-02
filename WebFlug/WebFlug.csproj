@@ -282,6 +282,7 @@
     <Content Include="Views\Offer\MyOffers.cshtml" />
     <Content Include="Views\Order\AcceptOffer.cshtml" />
     <Content Include="Views\Offer\offersOForder.cshtml" />
+    <Content Include="Views\Order\offersOForder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
