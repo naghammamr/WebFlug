@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using WebFlug.Models;
-using WebFlug.ViewModels;
 
 namespace WebFlug.Controllers
 {
@@ -66,7 +64,6 @@ namespace WebFlug.Controllers
 
             return View();
         }
-
     
         // GET: Offer/Details/5
         public ActionResult Details(int? id)
@@ -106,16 +103,10 @@ namespace WebFlug.Controllers
         {
             if (ModelState.IsValid)
             {
-                offers.CreationDate = DateTime.Now;
-
-                offers.OfferSatatus = "Pending";
-
                 db.Entry(offers).State = EntityState.Modified;
                 db.SaveChanges();
-                ViewBag.Message = "Edited Successfully ";
                 return RedirectToAction("Index");
             }
-            
             return View(offers);
         }
 
@@ -144,26 +135,7 @@ namespace WebFlug.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        
 
-        public ActionResult offersOForder(int? id)
-        {
-            var UserId = User.Identity.GetUserId();
-            var Orders = db.orders.Where(a => a.UserId == UserId).ToList();
-
-            Orders orders = db.orders.Find(id);
-            var offers = db.offers.Where(x => x.Order_Id == id).ToList();
-            
-            OrdersViewModel viewmodel = new OrdersViewModel
-            {
-                order = orders,
-                Offers = offers
-            };
-
-            return View(viewmodel);
-        }
-
-       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

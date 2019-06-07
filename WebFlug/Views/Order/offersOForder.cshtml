@@ -4,22 +4,37 @@
     ViewBag.Title = "offers of orders";
 }
 <h3>
-    @Model.order.OrderNumber
+    <b> Prodcut Name :</b> @Model.order.ProductName
+    <br />
+    <b> Order Number :</b> @Model.order.OrderNumber
 </h3>
 
-@if (Model.Offers.Count == 0)
-{
-    <text> No offers for this order</text>
-}
-else
-{ <h4>Offers Count = @Model.Offers.Count </h4>
-
-<ui>
-    @foreach (var offer in Model.Offers)
+    @if (Model.Offers.Count == 0)
     {
-
-        <li>@offer.TravellerReward</li>
+        <text> No offers for this order</text>
     }
-</ui>
-}
+    else
+    {
+         <h3><b>Offers Count : </b>@Model.Offers.Count </h3>
 
+         <table class="table">
+             @foreach (var item in Model.Offers)
+             {
+                 <tr>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.TravellerReward)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.DeliverDate)
+                     </td>
+                     
+                     <td>
+                         @Html.ActionLink("Accept Offer", "offersOForder", new { id = Model.order.Order_Id }) |
+                         @Html.ActionLink("Reject Offer", "", "")|
+                     </td>
+                 </tr>
+             }
+
+         </table>
+
+        }

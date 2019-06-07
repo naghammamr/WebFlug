@@ -45,6 +45,7 @@ namespace WebFlug.Models
         public string DeliverTo { get; set; }
 
         [Required(ErrorMessage = "Choose a date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.Date)]
         public DateTime DeliverDate { get; set; }
 
@@ -62,11 +63,6 @@ namespace WebFlug.Models
         [ForeignKey("UserId")]
         public virtual ApplicationUser user { get; set; }
 
-        public virtual ICollection<Offers> offers { get; set; }
-
-        public Orders()
-        {
-            this.offers = new HashSet<Offers>();
-        }
+        
     }
 }

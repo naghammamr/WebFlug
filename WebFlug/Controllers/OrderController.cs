@@ -39,7 +39,6 @@ namespace WebFlug.Controllers
             return View(orders);
         }
 
-
         public static string GetUniqueKey(int size)
         {
             char[] chars = "ABKHLNOPSTUWXYZ1234567890".ToCharArray();
@@ -133,7 +132,7 @@ namespace WebFlug.Controllers
         // POST: Order/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Orders order, HttpPostedFileBase upload)
+        public ActionResult Edit(Orders order, int id, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -143,14 +142,12 @@ namespace WebFlug.Controllers
                     upload.SaveAs(path);
                     order.ProductImage = upload.FileName;
                 }
-
-                order.CreationDate = DateTime.Now;
-
-                order.OrderSatatus = "Requested";
+                order.Order_Id = id;
                 db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                ViewBag.Message = "Edited Successfully ";
-                return RedirectToAction("Index");
+                if(db.SaveChanges()>0)
+                {
+                  return RedirectToAction("Index");
+                }
             }
             return View(order);
         }
@@ -181,24 +178,7 @@ namespace WebFlug.Controllers
             return RedirectToAction("Index");
         }
 
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AcceptOffer(Orders order)
-        {
-            if (ModelState.IsValid)
-            {
-                /*var offer = new Offers();
-                offer.OfferSatatus = "Accepted";*/
-                order.OrderSatatus = "InProgress";
-            }
-
-            db.Entry(order).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-
+        //GET :viewmodel
         public ActionResult offersOForder(int? id)
         {
             var UserId = User.Identity.GetUserId();
@@ -216,7 +196,30 @@ namespace WebFlug.Controllers
             return View(viewmodel);
         }
 
+        // POST: Order/AcceptOffer/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult offersOForder(OrdersViewModel viewmodel)
+        {
+            if (ModelState.IsValid)
+            {
 
+                
+                // Offers offers = new Offers();
+
+                viewmodel.order.CreationDate = DateTime.Now;
+                //offers.CreationDate = DateTime.Now;
+
+                viewmodel.order.OrderSatatus = "InProgress";
+               // offers.OfferSatatus = "Accepted";
+                
+              //  db.Entry(offers).State = EntityState.Modified;
+                db.Entry(viewmodel.order).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
 
 
         protected override void Dispose(bool disposing)

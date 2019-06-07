@@ -17,6 +17,8 @@
     @Html.HiddenFor(model => model.Offer_Id)
     @Html.HiddenFor(model => model.Order_Id)
     @Html.HiddenFor(model => model.UserId)
+    @Html.HiddenFor(model => model.CreationDate)
+    @Html.HiddenFor(model => model.OfferSatatus)
 
     <div class="form-group">
         @Html.LabelFor(model => model.TravellerReward, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -29,7 +31,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.DeliverDate, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.DeliverDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(model => model.DeliverDate, "{0:MM/dd/yyyy}", new { @class = "form-control datepicker" })
             @Html.ValidationMessageFor(model => model.DeliverDate, "", new { @class = "text-danger" })
         </div>
     </div>
