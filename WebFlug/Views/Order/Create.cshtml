@@ -2,9 +2,8 @@
 
 @{
     ViewBag.Title = "Create Order";
+    @Html.Partial("_NavBar")
 }
-
-<h2>Create</h2>
 
 @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {

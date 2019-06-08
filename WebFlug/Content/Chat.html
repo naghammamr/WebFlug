@@ -1,0 +1,815 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Trip</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/Chat.css">
+    <!--===============================================================================================-->
+</head>
+<body class="animsition">
+
+    <!-- Header -->
+    <header class="header-v2">
+        <!-- Header desktop -->
+        <div class="container-menu-desktop trans-03">
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop p-l-45">
+
+                    <!-- Logo desktop -->
+                    <a href="#" class="logo">
+                        <img src="images/icons/fluglogo.png" alt="IMG-LOGO">
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li>
+                                <a href="index.cshtml">Home</a>
+                            </li>
+
+                            <li class="active-menu">
+                                <a href=@Url.Content("/Content/orders.html")>Orders</a>
+                            </li>
+
+                            <li class="label1" data-label1="hot">
+                                <a href=("shoping-cart.html")>Offers</a>
+                            </li>
+
+
+                            <li>
+                                <a href=@Url.Content("/Content/about.html")>Trips</a>
+                            </li>
+
+                            <li>
+                                <a href=@Url.Content("/Content/about.html")>About</a>
+                            </li>
+
+                            <li>
+                                <a href=@Url.Content("/Content/contact.html")>Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="wrap-icon-header flex-w flex-r-m h-full">
+                        <div class="flex-c-m h-full p-r-24">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                                <i class="zmdi zmdi-search"></i>
+                            </div>
+                        </div>
+
+                        <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+                                <i class="zmdi zmdi-notifications"></i>
+                            </div>
+                        </div>
+
+                        <div class="flex-c-m h-full p-lr-19">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
+                                <i class="zmdi zmdi-menu"></i>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a href="index.html"><img src=@Url.Content("/Content/images/icons/fluglogo.png") alt="IMG-LOGO"></a>
+            </div>
+
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+                <div class="flex-c-m h-full p-r-10">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                        <i class="zmdi zmdi-search"></i>
+                    </div>
+                </div>
+
+                <div class="flex-c-m h-full p-lr-10 bor5">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+
+
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
+            <ul class="main-menu-m">
+                <li>
+                    <a href="index.html">Home</a>
+                    <ul class="sub-menu-m">
+                        <li><a href="index.html">Homepage 1</a></li>
+                        <li><a href="home-02.html">Homepage 2</a></li>
+                        <li><a href="home-03.html">Homepage 3</a></li>
+                    </ul>
+                    <span class="arrow-main-menu-m">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </li>
+
+                <li>
+                    <a href="product.html">Shop</a>
+                </li>
+
+                <li>
+                    <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+                </li>
+
+                <li>
+                    <a href="blog.html">Blog</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                    <img src="images/icons/icon-close2.png" alt="CLOSE">
+                </button>
+
+                <form class="wrap-search-header flex-w p-l-15">
+                    <button class="flex-c-m trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="plh3" type="text" name="search" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart -->
+    <!-- Sidebar -->
+    <aside class="wrap-sidebar js-sidebar">
+        <div class="s-full js-hide-sidebar"></div>
+
+        <div class="sidebar flex-col-l p-t-22 p-b-25">
+            <div class="flex-r w-full p-b-30 p-r-27">
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-sidebar">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+
+            <div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
+                <ul class="sidebar-link w-full">
+                    <li class="p-b-13">
+                        <a href="index.html" class="stext-102 cl2 hov-cl1 trans-04">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            My Wishlist
+                        </a>
+                    </li>
+
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            My Account
+                        </a>
+                    </li>
+
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            Track Oder
+                        </a>
+                    </li>
+
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            Refunds
+                        </a>
+                    </li>
+
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            Help & FAQs
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="flex-w flex-sb p-t-36 gallery-lb">
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-01.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-01.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-02.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-02.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-03.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-03.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-04.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-04.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-05.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-05.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-06.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-06.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-07.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-07.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-08.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-08.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-09.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-09.jpg');"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-gallery w-full">
+            <span class="mtext-101 cl5">
+                About Us
+            </span>
+
+            <p class="stext-108 cl6 p-t-27">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus vulputate hendrerit. Praesent faucibus erat vitae rutrum gravida. Vestibulum tempus mi enim, in molestie sem fermentum quis.
+            </p>
+        </div>
+
+    </aside>
+
+
+    <!-- Cart -->
+    <div class="wrap-header-cart js-panel-cart">
+        <div class="s-full js-hide-cart"></div>
+
+        <div class="header-cart flex-col-l p-l-65 p-r-25">
+            <div class="header-cart-title flex-w flex-sb-m p-b-8">
+                <span class="mtext-103 cl2">
+                    Your Cart
+                </span>
+
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+
+            <div class="header-cart-content flex-w js-pscroll">
+                <ul class="header-cart-wrapitem w-full">
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img src="images/item-cart-01.jpg" alt="IMG">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                White Shirt Pleat
+                            </a>
+
+                            <span class="header-cart-item-info">
+                                1 x $19.00
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img src="images/item-cart-02.jpg" alt="IMG">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                Converse All Star
+                            </a>
+
+                            <span class="header-cart-item-info">
+                                1 x $39.00
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img src="images/item-cart-03.jpg" alt="IMG">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                Nixon Porter Leather
+                            </a>
+
+                            <span class="header-cart-item-info">
+                                1 x $17.00
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="w-full">
+                    <div class="header-cart-total w-full p-tb-40">
+                        Total: $75.00
+                    </div>
+
+                    <div class="header-cart-buttons flex-w w-full">
+                        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                            View Cart
+                        </a>
+
+                        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+                            Check Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class=" text-center">Inbox</h3>
+        <div class="messaging">
+            <div class="inbox_msg">
+                <div class="inbox_people">
+                    <div class="headind_srch">
+                        <div class="recent_heading">
+                            <h4>Recent</h4>
+                        </div>
+                        <div class="srch_bar">
+                            <div class="stylish-input-group">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inbox_chat">
+                        <div class="chat_list active_chat">
+                            <div class="chat_people">
+                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                    <p>
+                                        Test, which is a new approach to have all solutions
+                                        astrology under one roof.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat_list">
+                            <div class="chat_people">
+                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                    <p>
+                                        Test, which is a new approach to have all solutions
+                                        astrology under one roof.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat_list">
+                            <div class="chat_people">
+                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                    <p>
+                                        Test, which is a new approach to have all solutions
+                                        astrology under one roof.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat_list">
+                            <div class="chat_people">
+                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                    <p>
+                                        Test, which is a new approach to have all solutions
+                                        astrology under one roof.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat_list">
+                            <div class="chat_people">
+                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                    <p>
+                                        Test, which is a new approach to have all solutions
+                                        astrology under one roof.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat_list">
+                            <div class="chat_people">
+                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                    <p>
+                                        Test, which is a new approach to have all solutions
+                                        astrology under one roof.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat_list">
+                            <div class="chat_people">
+                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                    <p>
+                                        Test, which is a new approach to have all solutions
+                                        astrology under one roof.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mesgs">
+                    <div class="msg_history">
+                        <div class="incoming_msg">
+                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <p>
+                                        Test which is a new approach to have all
+                                        solutions
+                                    </p>
+                                    <span class="time_date"> 11:01 AM    |    June 9</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="outgoing_msg">
+                            <div class="sent_msg">
+                                <p>
+                                    Test which is a new approach to have all
+                                    solutions
+                                </p>
+                                <span class="time_date"> 11:01 AM    |    June 9</span>
+                            </div>
+                        </div>
+                        <div class="incoming_msg">
+                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <p>Test, which is a new approach to have</p>
+                                    <span class="time_date"> 11:01 AM    |    Yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="outgoing_msg">
+                            <div class="sent_msg">
+                                <p>Apollo University, Delhi, India Test</p>
+                                <span class="time_date"> 11:01 AM    |    Today</span>
+                            </div>
+                        </div>
+                        <div class="incoming_msg">
+                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <p>
+                                        We work directly with our designers and suppliers,
+                                        and sell direct to you, which means quality, exclusive
+                                        products, at a price anyone can afford.
+                                    </p>
+                                    <span class="time_date"> 11:01 AM    |    Today</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="type_msg">
+                        <div class="input_msg_write">
+                            <input type="text" class="write_msg" placeholder="Type a message" />
+                            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        Help
+                    </h4>
+
+                    <ul>
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Track Order
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Returns
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Shipping
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                FAQs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        GET IN TOUCH
+                    </h4>
+
+                    <p class="stext-107 cl7 size-201">
+                        Any questions? Visit our social media
+                    </p>
+
+                    <div class="p-t-27">
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        Newsletter
+                    </h4>
+
+                    <form>
+                        <div class="wrap-input1 w-full p-b-4">
+                            <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+                            <div class="focus-input1 trans-04"></div>
+                        </div>
+
+                        <div class="p-t-18">
+                            <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+                                Subscribe
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <p class="stext-107 cl6 txt-center">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+            </p>
+        </div>
+
+    </footer>
+
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <!--countries-->
+    <script>
+        var countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central Arfrican Republic", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus", "Czech Republic", "Cairo,Egypt", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Newyork, USA", "Nauro", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
+        function autocomplete(inp, arr) {
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+            /*execute a function when someone writes in the text field:*/
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+    </script>
+    <script>
+        autocomplete(document.getElementById("myInput"), countries);
+    </script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

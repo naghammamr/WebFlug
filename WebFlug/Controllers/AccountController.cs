@@ -155,11 +155,6 @@ namespace WebFlug.Controllers
                 {
                     UserName = model.UserName,
                     Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    City = model.City,
-                    Country = model.Country,
-                    PhoneNumber = model.Phone
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

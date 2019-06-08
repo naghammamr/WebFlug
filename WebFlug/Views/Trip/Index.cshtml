@@ -2,61 +2,65 @@
 
 @{
     ViewBag.Title = "Index";
-}
+    @Html.Partial("_NavBar")
 
-<h2>Index</h2>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FromWhere)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ToWhere)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DepartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TripCreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketPhoto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AdditionalDetails)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FromWhere)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ToWhere)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TripCreationDate)
-        </td>
-        <td>
-            <img src="~/Uploads/@Html.DisplayFor(modelItem => item.TicketPhoto)" class="thumbnail" style="width:100px" ; height:100px" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdditionalDetails)
-        </td>
+@foreach (var item in Model)
+{
+    <!-- Shoping Cart -->
+    <form class="bg0 p-t-75 p-b-85">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+                    <div class="m-l-25 m-r--38 m-lr-0-xl">
+                        <div class="wrap-table-shopping-cart">
 
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Trip_Id }) 
-        </td>
-    </tr>
+                            <table class="table-shopping-cart">
+                                <tr class="table_head">
+                                    <th class="column-1">Your Trips</th>
+                                    <th class="column-2"></th>
+                                    <th class="column-3"></th>
+                                    <th class="column-4"></th>
+                                    <th class="column-5"></th>
+                                </tr>
+
+                                <tr class="table_row">
+                                    <td class="column-1">
+
+                                        <div >
+                                            <h1>@Html.DisplayFor(modelItem => item.FromWhere)</h1>
+                                        </div>
+
+                                        <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                            Edit trip
+                                        </div>
+                                    </td>
+                                    <td class="column-2"> </td>
+                                    <td class="column-3">TO </td>
+                                    <td class="column-4"></td>
+                                    <td class="column-5">
+
+                                        <div >
+                                            <h1>@Html.DisplayFor(modelItem => item.ToWhere)</h1>
+                                        </div>
+                                        <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                            Cancel trip
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
 }
-
-</table>

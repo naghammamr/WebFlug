@@ -1,53 +1,53 @@
 ﻿@model IEnumerable<WebFlug.Models.Orders>
 
 @{
-    ViewBag.Title = "ViewOldOrders";
+    @Html.Partial("_NavBar")
 }
 
-<h2>ViewOldOrders</h2>
+<title>Orders</title>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductDetails)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderSatatus)
-        </th>
-        
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductDetails)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderSatatus)
-        </td>
+<!-- Product -->
+<div class="bg0 m-t-23 p-b-140" style="display:inline">
+    <div class="container">
+        <div class="row isotope-grid">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                    <div>
+                        <div class="block2-pic hov-img0">
+                            <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ProductImage)" />
+                            <a href="Details.cshtml" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Quick View
+                            </a>
+                        </div>
+                        <!--start div-->
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                @Html.ActionLink("Show Details", "Details", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" })
+                                <p class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                </p>
+                                <span class="stext-105 cl3">
+                                    @Html.DisplayFor(modelItem => item.ProductPrice) L.E
+                                </span>
+                            </div>
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Order_Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Order_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Order_Id }) |
-        </td>
-    </tr>
-}
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="~/Content/images/icons/icon-heart-01.png" alt="ICON">
+                                </a>
+                            </div>
+                        </div>
+                        <!--end div-->
+                    </div>
+                </div>
 
-</table>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_footer")

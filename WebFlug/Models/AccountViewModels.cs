@@ -9,7 +9,7 @@ namespace WebFlug.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
-
+    
     public class ExternalLoginListViewModel
     {
         public string ReturnUrl { get; set; }
@@ -77,32 +77,6 @@ namespace WebFlug.Models
         [Display(Name = "User Name")]
         [StringLength(50)]
         public string UserName { get; set; }
-
-        [Required]
-        [Display(Name = "First Name")]
-        [StringLength(50)]
-        public string FirstName { get; set; }
-
-        [Required]
-        [Display(Name = "Last Name")]
-        [StringLength(50)]
-        public string LastName { get; set; }
-
-        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
-        [Phone]
-        [Display(Name = "Phone Number")]
-        public string Phone { get; set; }
-
-        [Required]
-        [Display(Name = "City")]
-        [StringLength(50)]
-        public string City { get; set; }
-
-        [Required]
-        [Display(Name = "Country")]
-        [StringLength(50)]
-        public string Country { get; set; }
-
 
         //end Nagham
         //

@@ -1,31 +1,113 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Customer_Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+    @Html.Partial("_VisitorNavBar");
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!-- Slider -->
+<section class="section-slide">
+    <div class="wrap-slick1">
+        <div class="slick1">
+            <div class="item-slick1" style="background-image: url(/Content/images/plane1.jpg);">
+                <div class="container h-full">
+                    <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+                        <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
+                            <span class="ltext-101 cl2 respon2">
+                                With flug you can
+                            </span>
+                        </div>
+
+                        <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+                            <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+                                SHIP AND TRIP
+                            </h2>
+                        </div>
+                        <style>
+                            #ordertravel
+                            a {
+                                display: inline;
+                                padding: 10px;
+                                margin: 30px;
+                            }
+                        </style>
+                        <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600" id="ordertravel">
+                            <a href="~/Content/createOrder.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Create Order
+                            </a>
+                            <a href="~/Content/AddTrip.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Travel with flug
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-slick1" style="background-image: url(/Content/images/hand1.jpg);">
+                <div class="container h-full">
+                    <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+                        <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
+                            <span class="ltext-101 cl2 respon2">
+                                Get what you want from
+                            </span>
+                        </div>
+
+                        <div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
+                            <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+                                around the world
+                            </h2>
+                        </div>
+
+
+                        <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600" id="ordertravel">
+                            <a href="~/Content/createOrder.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Create Order
+                            </a>
+
+
+                            <a href="~/Content/AddTrip.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Travel with flug
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-slick1" style="background-image: url(/Content/images/paris1.jpg);">
+                <div class="container h-full">
+                    <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+                        <div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
+                            <span class="ltext-101 cl2 respon2">
+                                you also can travel with flug
+                            </span>
+                        </div>
+
+                        <div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
+                            <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+                                and shop for money
+                            </h2>
+                        </div>
+
+                        <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600" id="ordertravel">
+                            <a href="~/Content/createOrder.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Create Order
+                            </a>
+
+
+                            <a href="~/Content/AddTrip.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Travel with flug
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</section>
+
+@Html.Partial("_Footer")
