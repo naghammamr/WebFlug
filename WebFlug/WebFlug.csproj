@@ -270,7 +270,6 @@
     <Content Include="Views\Trip\Create.cshtml" />
     <Content Include="Views\Trip\MyTrips.cshtml" />
     <Content Include="Views\Trip\Details.cshtml" />
-    <Content Include="Views\Trip\Edit.cshtml" />
     <Content Include="Views\Trip\Delete.cshtml" />
     <Content Include="Views\Order\Create.cshtml" />
     <Content Include="Views\Offer\Index.cshtml" />
@@ -282,6 +281,7 @@
     <Content Include="Views\Order\AcceptOffer.cshtml" />
     <Content Include="Views\Order\offersOForder.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Trip\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -146,7 +146,7 @@ namespace WebFlug.Controllers
                 db.Entry(order).State = EntityState.Modified;
                 if(db.SaveChanges()>0)
                 {
-                  return RedirectToAction("Index");
+                  return RedirectToAction("ViewOldOrders");
                 }
             }
             return View(order);

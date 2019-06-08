@@ -18,6 +18,7 @@ namespace WebFlug.Models
         public string ToWhere { get; set; }
 
         [Required(ErrorMessage = "Choose a date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.Date)]
         public DateTime DepartDate { get; set; }
 
@@ -33,7 +34,7 @@ namespace WebFlug.Models
         public string AdditionalDetails { get; set; }
 
         // Foreign key 
-        public String UserId { get; set; }
+        public string UserId { get; set; }
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser user { get; set; }
