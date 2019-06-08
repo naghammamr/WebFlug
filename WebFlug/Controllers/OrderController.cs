@@ -199,26 +199,21 @@ namespace WebFlug.Controllers
         // POST: Order/AcceptOffer/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult offersOForder(OrdersViewModel viewmodel)
+        public ActionResult AcceptOffer(Offers offers)
         {
+            Orders order = new Orders();
+
             if (ModelState.IsValid)
             {
-
+                order.OrderSatatus = "InProgress";
+                offers.OfferSatatus = "Accepted";
                 
-                // Offers offers = new Offers();
-
-                viewmodel.order.CreationDate = DateTime.Now;
-                //offers.CreationDate = DateTime.Now;
-
-                viewmodel.order.OrderSatatus = "InProgress";
-               // offers.OfferSatatus = "Accepted";
-                
-              //  db.Entry(offers).State = EntityState.Modified;
-                db.Entry(viewmodel.order).State = EntityState.Modified;
+                db.Entry(offers).State = EntityState.Modified;
+                db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
+                return RedirectToAction("Index");
             }
-
-            return RedirectToAction("Index");
+            return View("offersOForder");
         }
 
 
