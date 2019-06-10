@@ -22,7 +22,7 @@ namespace WebFlug.Controllers
         // GET: Order
         public IEnumerable<Orders> GetOrders()
         {
-            var orders = db.orders.ToList();
+            var orders = db.orders.Where(x => x.OrderSatatus == "Requested").ToList();
             return orders;
         }
 
@@ -199,21 +199,21 @@ namespace WebFlug.Controllers
         // POST: Order/AcceptOffer/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AcceptOffer(Offers offers)
+        public ActionResult offersOForder(OrdersViewModel viewmodel)
         {
-            Orders order = new Orders();
+            Offers offers = new Offers();
 
             if (ModelState.IsValid)
             {
-                order.OrderSatatus = "InProgress";
+                viewmodel.order.OrderSatatus = "InProgress";
                 offers.OfferSatatus = "Accepted";
                 
                 db.Entry(offers).State = EntityState.Modified;
-                db.Entry(order).State = EntityState.Modified;
+                db.Entry(viewmodel.order).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View("offersOForder");
+            return View(viewmodel);
         }
 
 

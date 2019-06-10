@@ -79,7 +79,18 @@ namespace WebFlug.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        var user = await UserManager.FindAsync(model.UserName, model.Password);
+                        if (user.IsBlocked == true)
+                        {
+                            return RedirectToAction("blocked", "Home");
+                        }
+                        else
+                        {
+                            return RedirectToLocal(returnUrl);
+                            //return RedirectToAction("Index", "Home");
+                        }
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

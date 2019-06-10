@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Admin Home";
+    @Html.Partial("_NavBar");
+    Layout = "~/Views/Shared/_layout.cshtml";
+
+}
+
+
+<!-- Start  -->
+<section id="mu-about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="mu-title">
+                    <span class="mu-subtitle">Manage</span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mu-about-us-left">
+                            <h2>
+                                @Html.ActionLink("Categories", "Index", "Categories")
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mu-about-us-right">
+                            <h2>
+                                @Html.ActionLink("Items", "Index", "Items")
+                            </h2>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="mu-reservation-left">
+                            <h2>
+                                @Html.ActionLink("Users", "showUsers", "Admin")
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<!-- End -->

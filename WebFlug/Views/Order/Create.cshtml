@@ -1,8 +1,10 @@
 ﻿@model WebFlug.Models.Orders
 
 @{
-    ViewBag.Title = "Create Order";
+    ViewBag.Title = "Customer_Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     @Html.Partial("_NavBar")
+}
 }
 
 @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))

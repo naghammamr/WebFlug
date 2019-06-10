@@ -3,38 +3,58 @@
 @{
     ViewBag.Title = "offers of orders";
 }
+
 <h3>
     <b> Prodcut Name :</b> @Model.order.ProductName
     <br />
     <b> Order Number :</b> @Model.order.OrderNumber
 </h3>
 
-    @if (Model.Offers.Count == 0)
-    {
-        <text> No offers for this order</text>
-    }
-    else
-    {
-         <h3><b>Offers Count : </b>@Model.Offers.Count </h3>
+@if (Model.Offers.Count == 0)
+{
+    <text> No offers for this order</text>
+}
+else
+{
+    @Html.HiddenFor(model => model.order.Order_Id)
+    @Html.HiddenFor(model => model.order.UserId)
+    @Html.HiddenFor(model => model.order.OrderNumber)
+    @Html.HiddenFor(model => model.order.CreationDate)
+    @Html.HiddenFor(model => model.order.ProductImage)
+    @Html.HiddenFor(model => model.order.ProductDetails)
+    @Html.HiddenFor(model => model.order.ProductLink)
+    @Html.HiddenFor(model => model.order.ProductName)
+    @Html.HiddenFor(model => model.order.ProductPrice)
+    @Html.HiddenFor(model => model.order.ProductQuantity)
+    @Html.HiddenFor(model => model.order.ProductWeight)
+    @Html.HiddenFor(model => model.order.DeliverDate)
+    @Html.HiddenFor(model => model.order.Deliverfrom)
+    @Html.HiddenFor(model => model.order.DeliverTo)
 
-         <table class="table">
-             @foreach (var item in Model.Offers)
-             {
-                 <tr>
-                     <td>
-                         @Html.DisplayFor(modelItem => item.TravellerReward)
-                     </td>
-                     <td>
-                         @Html.DisplayFor(modelItem => item.DeliverDate)
-                     </td>
-                     
-                     <td>
-                         @Html.ActionLink("Accept Offer", "offersOForder", new { id = Model.order.Order_Id }) |
-                         @Html.ActionLink("Reject Offer", "", "")|
-                     </td>
-                 </tr>
-             }
+    <h3><b>Offers Count : </b>@Model.Offers.Count </h3>
 
-         </table>
+    <table class="table">
+        @foreach (var item in Model.Offers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TravellerReward)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeliverDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfferSatatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.orders.OrderSatatus)
+                </td>
 
+                <td>
+                    @Html.ActionLink("Accept Offer", "offersOForder", new { id = item.Order_Id }) |
+                    @Html.ActionLink("Reject Offer", "Index", "")
+                </td>
+            </tr>
         }
+    </table>
+}

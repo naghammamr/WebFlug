@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebFlug.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "showUsers";
+    Layout = "~/Views/Shared/_layout.cshtml";
+    @Html.Partial("_NavBar");
+
+}
+<div style="margin-right:10px; margin-left:40px;">
+    <h2>Show all users</h2>
+
+    <table class="table">
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.IsBlocked)
+            </th>
+
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsBlocked)
+                </td>
+
+                <td>
+                    @if (item.IsBlocked == false)
+                    {
+                        @Html.ActionLink("Block", "Block", new { id = item.Id })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("UnBlock", "UnBlock", new { id = item.Id })} |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+
+    </table>
+    <div>
+        @Html.ActionLink("Back to Home", "Index")
+    </div>
+</div>
