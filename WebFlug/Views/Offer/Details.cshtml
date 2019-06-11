@@ -1,58 +1,72 @@
 ﻿@model WebFlug.Models.Offers
 
 @{
-    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<title>Offer Details</title>
+<br />
+<section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-5 p-b-30">
+                <div class="p-r-50 p-t-5 p-lr-0-lg">
 
-<div>
-    <h4>Offers</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.orders.OrderNumber)
-        </dt>
+                    <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                        Offer Details
+                    </h4>
 
-        <dd>
-            @Html.DisplayFor(model => model.orders.OrderNumber)
-        </dd>
+                    <div >
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.orders.OrderNumber)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TravellerReward)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.orders.OrderNumber)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TravellerReward)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TravellerReward)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.TravellerReward)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CreationDate)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OfferSatatus)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.CreationDate)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OfferSatatus)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.OfferSatatus)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliverDate)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.OfferSatatus)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DeliverDate)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DeliverDate)
+                            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Offer_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                            <dd>
+                                @Html.DisplayFor(model => model.DeliverDate)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Offer_Id }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>

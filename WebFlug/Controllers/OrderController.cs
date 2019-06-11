@@ -92,7 +92,7 @@ namespace WebFlug.Controllers
 
                 db.orders.Add(order);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewOldOrders", "Order");
             }
 
             return View(order);
@@ -100,6 +100,22 @@ namespace WebFlug.Controllers
 
         // GET: Order/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var order = GetOrders().SingleOrDefault(o => o.Order_Id == id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            Session["Order_Id"] = id;
+            return View(order);
+        }
+
+        // GET: Order/Details/5
+        public ActionResult ToMakeOffer_OrderDetails(int? id)
         {
             if (id == null)
             {
@@ -175,7 +191,7 @@ namespace WebFlug.Controllers
             Orders order = db.orders.Find(id);
             db.orders.Remove(order);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ViewOldOrders");
         }
 
         //GET :viewmodel
@@ -199,23 +215,23 @@ namespace WebFlug.Controllers
         // POST: Order/AcceptOffer/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult offersOForder(OrdersViewModel viewmodel)
+        public ActionResult offersOForder(Orders order,int orderid,int offerid)
         {
             Offers offers = new Offers();
-
+            order.Order_Id = orderid;
+            offers.Offer_Id = offerid;
             if (ModelState.IsValid)
             {
-                viewmodel.order.OrderSatatus = "InProgress";
+                order.OrderSatatus = "InProgress";
                 offers.OfferSatatus = "Accepted";
                 
                 db.Entry(offers).State = EntityState.Modified;
-                db.Entry(viewmodel.order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(viewmodel);
-        }
+                db.Entry(order).State = EntityState.Modified;
 
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home");
+        }
 
         protected override void Dispose(bool disposing)
         {

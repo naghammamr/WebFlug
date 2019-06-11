@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNet.Identity
+@using WebFlug.Models
+@if (Request.IsAuthenticated)
+{
+    @Html.AntiForgeryToken()
+    <div class="wrap-icon-header flex-w flex-r-m h-full" style="margin-left:70px;">
+        <div class="flex-c-m h-full p-r-24">
+
+            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11">
+                <i class="zmdi zmdi-inbox"> <a href="~/Views/"></a></i>
+            </div>
+        </div>
+
+        <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
+            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+                <i class="zmdi zmdi-notifications"></i>
+            </div>
+        </div>
+
+        <div class="flex-c-m h-full p-lr-19">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
+
+                    <img src="~/Content/images/nada.jpg" alt="Avatar" style="border-radius: 50%; width: 40px; height: 40px;">
+
+                </div>
+            </div>
+
+
+    </div>
+}
+else
+{
+}

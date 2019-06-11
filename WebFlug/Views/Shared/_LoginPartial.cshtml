@@ -1,33 +1,62 @@
 ﻿@using Microsoft.AspNet.Identity
+@using WebFlug.Models
 @if (Request.IsAuthenticated)
 {
+
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
+        var db = new ApplicationDbContext();
+        var UserID = User.Identity.GetUserId();
+        var CurrentUser = db.Users.Where(a => a.Id == UserID).SingleOrDefault();
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
+            @*<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong style="padding:10px; margin-top:10px;"> @CurrentUser.UserName </strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="user-navbar">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <p class="text-center">
+                                            <span class="glyphicon glyphicon-user img-size" style="padding: 20px; font-size: 30px ;"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-8" style="padding:10px;">
+                                        <div style="padding-bottom:10px ;"><a href="#">My Wishlist</a></div>
+                                        <div><a href="@Url.Action("EditProfile","Account")">Edit Profile</a></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>*@
+            <li style="padding:10px;">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+            <li class="divider"></li>
+            <li style="padding:10px;"><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+            @*<li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+            *@
         </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <div class="wrap-icon-header flex-w flex-r-m h-full">
-            <div class="flex-c-m h-full p-r-24">
-                <div class="icon-header-item" style="padding-right:10px; margin-left:870px;">
-                    <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                </div>
-                <div class="icon-header-item">
-
-                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                </div>
-            </div>
-        </div>
-
-
+        <li style="padding:10px;">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li style="padding:10px;">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+<style>
+    .navbar-nav {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        color: white;
+    }
+</style>

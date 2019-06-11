@@ -204,29 +204,12 @@
     <Compile Include="Migrations\201905101425055_InitialMigration.Designer.cs">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906012322468_j.cs" />
-    <Compile Include="Migrations\201906012322468_j.Designer.cs">
-      <DependentUpon>201906012322468_j.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906012326466_a.cs" />
-    <Compile Include="Migrations\201906012326466_a.Designer.cs">
-      <DependentUpon>201906012326466_a.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906082113366_remove.cs" />
-    <Compile Include="Migrations\201906082113366_remove.Designer.cs">
-      <DependentUpon>201906082113366_remove.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906092207027_Faq.cs" />
-    <Compile Include="Migrations\201906092207027_Faq.Designer.cs">
-      <DependentUpon>201906092207027_Faq.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906092356595_block.cs" />
-    <Compile Include="Migrations\201906092356595_block.Designer.cs">
-      <DependentUpon>201906092356595_block.cs</DependentUpon>
+    <Compile Include="Migrations\201906101519257_d.cs" />
+    <Compile Include="Migrations\201906101519257_d.Designer.cs">
+      <DependentUpon>201906101519257_d.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\FAQ.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -237,6 +220,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
+    <Compile Include="ViewModels\showmessageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\about.html" />
@@ -669,7 +653,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -706,7 +689,6 @@
     <Content Include="Views\Offer\Delete.cshtml" />
     <Content Include="Views\Offer\MakeOffer.cshtml" />
     <Content Include="Views\Offer\MyOffers.cshtml" />
-    <Content Include="Views\Order\AcceptOffer.cshtml" />
     <Content Include="Views\Order\offersOForder.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\Trip\Edit.cshtml" />
@@ -718,27 +700,20 @@
     <Content Include="Views\Admin\ViewFAQ.cshtml" />
     <Content Include="Views\EmailSetup\ContactUs.cshtml" />
     <Content Include="Views\EmailSetup\SendEmail.cshtml" />
-    <Content Include="Views\UsersAdmin\Index.cshtml" />
-    <Content Include="Views\UsersAdmin\Edit.cshtml" />
-    <Content Include="Views\UsersAdmin\Details.cshtml" />
-    <Content Include="Views\UsersAdmin\Delete.cshtml" />
-    <Content Include="Views\UsersAdmin\Create.cshtml" />
-    <Content Include="Views\RolesAdmin\Index.cshtml" />
-    <Content Include="Views\RolesAdmin\Edit.cshtml" />
-    <Content Include="Views\RolesAdmin\Details.cshtml" />
-    <Content Include="Views\RolesAdmin\Delete.cshtml" />
-    <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Home\blocked.cshtml" />
     <Content Include="Views\Admin\UnBlock.cshtml" />
     <Content Include="Views\Admin\Block.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\showUsers.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Notifi_Inbox.cshtml" />
+    <Content Include="Views\Shared\Order_Offer.cshtml" />
+    <Content Include="Views\Order\ToMakeOffer_OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -757,20 +732,8 @@
     <EmbeddedResource Include="Migrations\201905101425055_InitialMigration.resx">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906012322468_j.resx">
-      <DependentUpon>201906012322468_j.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906012326466_a.resx">
-      <DependentUpon>201906012326466_a.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906082113366_remove.resx">
-      <DependentUpon>201906082113366_remove.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906092207027_Faq.resx">
-      <DependentUpon>201906092207027_Faq.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906092356595_block.resx">
-      <DependentUpon>201906092356595_block.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906101519257_d.resx">
+      <DependentUpon>201906101519257_d.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

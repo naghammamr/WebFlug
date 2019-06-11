@@ -33,16 +33,355 @@
     <link rel="stylesheet" type="text/css" href=@Url.Content("/Content/css/util.css")>
     <link rel="stylesheet" type="text/css" href=@Url.Content("/Content/css/main.css")>
     <!--===============================================================================================-->
-
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
 </head>
 <body class="animsition">
+    <!-- Header -->
+    <header class="header-v4">
 
+        <!-- Header desktop -->
+        <div class="container-menu-desktop">
+            <!-- Topbar -->
+            <div class="top-bar">
+                <div class="content-topbar flex-sb-m h-full container">
+                    <div class="left-top-bar" style="color:white">
+                       
+                    </div>
+
+                    <div class="right-top-barr" style="display:inline;">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+            <div class="wrap-menu-desktop how-shadow1">
+
+                <nav class="limiter-menu-desktop p-l-45">
+
+                    <!-- Logo desktop -->
+                    <a href="#" class="logo">
+                        <img src=@Url.Content("/Content/images/icons/fluglogo.png") alt="IMG-LOGO">
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                                <a href="index.cshtml">Home</a>
+
+                            @Html.Partial("Order_Offer")
+
+
+
+                            <li>
+                                <a href=@Url.Content("/Content/about.html")>About</a>
+                            </li>
+
+                            <li>
+                                <a href=@Url.Content("/Content/contact.html")>Contact</a>
+                            </li>
+
+
+                        </ul>
+
+
+                    </div>
+                    <!-- Icon header -->
+
+
+                    @Html.Partial("Notifi_Inbox")
+                </nav>
+
+
+            </div>
+        </div>
+
+
+
+    </header>
+
+
+    <!-- Sidebar -->
+    <aside class="wrap-sidebar js-sidebar">
+        <div class="s-full js-hide-sidebar"></div>
+
+        <div class="sidebar flex-col-l p-t-22 p-b-25">
+            <div class="flex-r w-full p-b-30 p-r-27">
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-sidebar">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+
+            <div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
+                <ul class="sidebar-link w-full">
+
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            My Profile
+                        </a>
+                    </li>
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            My Wishlist
+                        </a>
+                    </li>
+
+
+
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            Track Order
+                        </a>
+                    </li>
+
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            Refunds
+                        </a>
+                    </li>
+
+                    <li class="p-b-13">
+                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
+                            Help & FAQs
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="flex-w flex-sb p-t-36 gallery-lb">
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-01.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-01.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-02.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-02.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-03.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-03.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-04.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-04.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-05.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-05.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-06.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-06.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-07.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-07.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-08.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-08.jpg');"></a>
+                </div>
+
+                <!-- item gallery sidebar -->
+                <div class="wrap-item-gallery m-b-10">
+                    <a class="item-gallery bg-img1" href="images/gallery-09.jpg" data-lightbox="gallery"
+                       style="background-image: url('images/gallery-09.jpg');"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-gallery w-full">
+            <span class="mtext-101 cl5">
+                About Us
+            </span>
+
+            <p class="stext-108 cl6 p-t-27">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus vulputate hendrerit. Praesent faucibus erat vitae rutrum gravida. Vestibulum tempus mi enim, in molestie sem fermentum quis.
+            </p>
+        </div>
+
+    </aside>
+
+
+    <!-- Notification -->
+    <div class="wrap-header-cart js-panel-cart">
+        <div class="s-full js-hide-cart"></div>
+
+        <div class="header-cart flex-col-l p-l-65 p-r-25">
+            <div class="header-cart-title flex-w flex-sb-m p-b-8">
+                <span class="mtext-103 cl2">
+                    Notifications
+                </span>
+
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+            @*offer notifications*@
+            <div class="header-cart-content flex-w js-pscroll">
+                <ul class="header-cart-wrapitem w-full">
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img src="images/item-cart-01.jpg" alt="IMG">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                First notification
+                            </a>
+
+
+                        </div>
+                    </li>
+
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img src="images/item-cart-02.jpg" alt="IMG">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                second notification
+                            </a>
+
+
+                        </div>
+                    </li>
+
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img src="images/item-cart-03.jpg" alt="IMG">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                third notification
+                            </a>
+
+
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
 
     <div>
         @RenderBody()
+    </div>
+    <!-- Footer -->
+    <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        Help
+                    </h4>
+
+                    <ul>
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Track Order
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Returns
+                            </a>
+                        </li>
+
+
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                FAQs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        GET IN TOUCH
+                    </h4>
+
+                    <p class="stext-107 cl7 size-201">
+                        Any questions? Visit our social media
+                    </p>
+
+                    <div class="p-t-27">
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        Newsletter
+                    </h4>
+
+
+                    <form>
+                        <div class="wrap-input1 w-full p-b-4">
+                            <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+                            <div class="focus-input1 trans-04"></div>
+                        </div>
+
+                        <div class="p-t-18">
+                            <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+                                Subscribe
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <p class="stext-107 cl6 txt-center">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+            </p>
+        </div>
+
+    </footer>
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
     </div>
 
     <!--===============================================================================================-->
@@ -146,7 +485,6 @@
     </script>
     <!--===============================================================================================-->
     <script src=@Url.Content("/Content/js/main.js")></script>
-
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

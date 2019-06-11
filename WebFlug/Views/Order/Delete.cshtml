@@ -1,139 +1,163 @@
 ﻿@model WebFlug.Models.Orders
 
 @{
-    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<title>Delete</title>
+<br />
+<section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-5 p-b-30">
+                <div class="p-r-50 p-t-5 p-lr-0-lg">
 
-<h2>Delete</h2>
+                    <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                        Are You sure you want delete this order?
+                    </h4>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderNumber)
-        </dt>
+                    <div>
+                        <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.OrderNumber)
-        </dd>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.OrderNumber)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.OrderNumber)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductName)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDetails)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductName)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductDetails)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductDetails)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductPrice)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductDetails)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductPrice)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductPrice)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductQuantity)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductPrice)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductQuantity)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductQuantity)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductQuantity)
+                            </dd>
 
-        <dd>
-            <img src="~/Uploads/@Html.DisplayFor(model => model.ProductImage)" class="thumbnail" style="width:60px ; height:60px" />
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductImage)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductLink)
-        </dt>
+                            <dd>
+                                <img src="~/Uploads/@Html.DisplayFor(model => model.ProductImage)" class="thumbnail" style="width:60px ; height:60px" />
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductLink)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductLink)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductWeight)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductLink)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductWeight)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductWeight)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Deliverfrom)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductWeight)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Deliverfrom)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Deliverfrom)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliverTo)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Deliverfrom)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DeliverTo)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DeliverTo)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliverDate)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.DeliverTo)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DeliverDate)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DeliverDate)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AdditionalDetails)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.DeliverDate)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AdditionalDetails)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.AdditionalDetails)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderSatatus)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.AdditionalDetails)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OrderSatatus)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.OrderSatatus)
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.OrderSatatus)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CreationDate)
+                            </dt>
 
+                            <dd>
+                                @Html.DisplayFor(model => model.CreationDate)
+                            </dd>
 
 
 
-    </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                        </dl>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "ViewOldOrders")
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <div class="size-210  flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                                    <div class="flex-w w-full p-b-42">
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
+                                                        onclick="location.href='@Url.Action("Delete", "Order")'">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.ActionLink("Back to My Orders", "ViewOldOrders")
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-    }
-</div>
+</section>

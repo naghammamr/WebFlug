@@ -1,49 +1,62 @@
 ﻿@model WebFlug.Models.Offers
 
 @{
-    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<title>Edit Offer</title>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
 <div class="form-horizontal">
-    <h4>Offers</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Offer_Id)
-    @Html.HiddenFor(model => model.Order_Id)
-    @Html.HiddenFor(model => model.UserId)
-    @Html.HiddenFor(model => model.CreationDate)
-    @Html.HiddenFor(model => model.OfferSatatus)
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.TravellerReward, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TravellerReward, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TravellerReward, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <br />
+            <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                Edit Offer
+            </h4>
+            <hr />
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.DeliverDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.DeliverDate, "{0:MM/dd/yyyy}", new { @class = "form-control datepicker" })
-            @Html.ValidationMessageFor(model => model.DeliverDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Offer_Id)
+            @Html.HiddenFor(model => model.Order_Id)
+            @Html.HiddenFor(model => model.UserId)
+            @Html.HiddenFor(model => model.CreationDate)
+            @Html.HiddenFor(model => model.OfferSatatus)
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.TravellerReward, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TravellerReward, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TravellerReward, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DeliverDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.DeliverDate, "{0:MM/dd/yyyy}", new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(model => model.DeliverDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-left:400px">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
+                        Submit
+                    </button>
+                </div>
+            </div>
+
+
+        }
+        <div>
+            @Html.ActionLink("Back to My Offers", "MyOffers")
         </div>
+
     </div>
 </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<br />
+<br />
+<br />

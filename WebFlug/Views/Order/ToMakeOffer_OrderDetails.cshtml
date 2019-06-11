@@ -129,16 +129,15 @@
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
-                                            onclick="location.href='@Url.Action("offersOForder", "Order", new { id = Model.Order_Id })'">
-                                        View Offers
+                                            onclick="location.href='@Url.Action("MakeOffer", "Offer")'">
+                                        Make Offer
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <p>
-                        @Html.ActionLink("Back to My Orders", "ViewOldOrders", "Order") |
-                        @Html.ActionLink("Edit Order", "Edit", new { id = Model.Order_Id})
+                        @Html.ActionLink("Back to Home Page", "Index", "Home")
                     </p>
                     @*END-Button*@
 

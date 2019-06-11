@@ -1,33 +1,44 @@
 ﻿@model IEnumerable<WebFlug.Models.Orders>
 
 @{
-    @Html.Partial("_VisitorNavBar")
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <title>Orders</title>
 
 
-<!-- Product -->
-<div class="bg0 m-t-23 p-b-140" style="display:inline">
+<div>
+    <h3 class="mtext-111 cl2 p-b-16" style="padding:20px;">
+        Recent Orders
+    </h3>
+</div>
+<div class="bg0 m-t-23 p-b-140" style="display:inline; padding:20px;">
     <div class="container">
         <div class="row isotope-grid">
             @foreach (var item in Model)
             {
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                    <div>
+                    <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ProductImage)" />
-                            <a href="Details.cshtml" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+                            <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ProductImage)" @*style="width:300px; height:300px;"*@ />
+
+                            <a onclick="location.href='@Url.Action("ToMakeOffer_OrderDetails", "Order", new { id =item.Order_Id })'" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Show Details
                             </a>
+
                         </div>
                         <!--start div-->
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                @Html.ActionLink("Show Details", "Details", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" })
+                                @*<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1 "
+                                            onclick="location.href='@Url.Action("ToMakeOffer_OrderDetails", "Order", new { id =item.Order_Id })'">
+                                        Show Details
+                                    </button>*@
+
                                 <p class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     @Html.DisplayFor(modelItem => item.ProductName)
                                 </p>
+
                                 <span class="stext-105 cl3">
                                     @Html.DisplayFor(modelItem => item.ProductPrice) L.E
                                 </span>
@@ -38,16 +49,14 @@
                                     <img class="icon-heart1 dis-block trans-04" src="~/Content/images/icons/icon-heart-01.png" alt="ICON">
                                 </a>
                             </div>
+
+                            <!--end div-->
                         </div>
-                        <!--end div-->
                     </div>
                 </div>
-
 
             }
 
         </div>
     </div>
 </div>
-
-@Html.Partial("_footer")

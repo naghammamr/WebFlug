@@ -105,7 +105,7 @@ namespace WebFlug.Controllers
             {
                 db.Entry(offers).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyOffers");
             }
             return View(offers);
         }
@@ -133,7 +133,7 @@ namespace WebFlug.Controllers
             Offers offers = db.offers.Find(id);
             db.offers.Remove(offers);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("MyOffers");
         }
 
         protected override void Dispose(bool disposing)

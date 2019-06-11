@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,7 +18,7 @@ namespace WebFlug.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime CreationDate { get; set; }
 
-        [StringLength(20)]
+        [DisplayName("Status")]
         public string OfferSatatus { get; set; }
 
         [Required(ErrorMessage = "Choose a date")]

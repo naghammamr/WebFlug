@@ -1,66 +1,69 @@
 ﻿@model IEnumerable<WebFlug.Models.Offers>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<title>Offers</title>
+<!-- Content page -->
+<section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <div class="container">
+        <div class="row">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+            <div class="col-md-6 col-lg-5 ">
+                <div class="p-r-50 p-t-5 p-lr-0-lg">
+                    <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                        Offers
+                    </h4>
+                </div>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.orders.ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TravellerReward)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreationDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OfferSatatus)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeliverDate)
+                    </th>
+                    <th></th>
+                </tr>
 
-        <th>
-            @Html.DisplayNameFor(model => model.orders.OrderNumber)
-        </th>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.orders.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TravellerReward)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreationDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OfferSatatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeliverDate)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Offer_Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Offer_Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Offer_Id })
+                        </td>
+                    </tr>
+                }
 
-        <th>
-            @Html.DisplayNameFor(model => model.orders.user.UserName)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.TravellerReward)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OfferSatatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeliverDate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.orders.OrderNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.user.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TravellerReward)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OfferSatatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeliverDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Offer_Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Offer_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Offer_Id })
-        </td>
-    </tr>
-}
-
-</table>
+            </table>
+        </div>
+    </div>
+</section>

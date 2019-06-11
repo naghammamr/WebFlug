@@ -35,8 +35,8 @@ namespace WebFlug.Models
 
         public string ProductLink { get; set; }
 
-        [Required(ErrorMessage = "Weight is required")]
-        public float ProductWeight { get; set; }
+        [Required(ErrorMessage = "Weight is required in Kilograms")]
+        public int ProductWeight { get; set; }
 
         [Required(ErrorMessage = "Choose a place please")]
         public string Deliverfrom { get; set; }
