@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201906111358480_d.Designer.cs">
       <DependentUpon>201906111358480_d.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906112048547_verify.cs" />
+    <Compile Include="Migrations\201906112048547_verify.Designer.cs">
+      <DependentUpon>201906112048547_verify.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Email.cs" />
@@ -219,8 +223,8 @@
     <Compile Include="Models\Trips.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
-    <Compile Include="ViewModels\showmessageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\about.html" />
@@ -712,6 +716,9 @@
     <Content Include="Views\Order\ToMakeOffer_OrderDetails.cshtml" />
     <Content Include="Views\Offer\AcceptOffer.cshtml" />
     <Content Include="Views\Order\AcceptOffer.cshtml" />
+    <Content Include="Views\Account\Activation.cshtml" />
+    <Content Include="Views\Account\EditProfile.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -736,6 +743,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906111358480_d.resx">
       <DependentUpon>201906111358480_d.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906112048547_verify.resx">
+      <DependentUpon>201906112048547_verify.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

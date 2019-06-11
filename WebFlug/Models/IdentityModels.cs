@@ -10,6 +10,8 @@ namespace WebFlug.Models
     public class ApplicationUser : IdentityUser
     {
         public bool IsBlocked { get; set; }
+        public string State { get; set; }
+        public int ActivationCode { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -36,6 +38,7 @@ namespace WebFlug.Models
         {
             return new ApplicationDbContext();
         }
-        
+
+        public System.Data.Entity.DbSet<WebFlug.Models.EditProfileViewModel> EditProfileViewModels { get; set; }
     }
 }

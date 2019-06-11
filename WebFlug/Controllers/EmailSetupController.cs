@@ -8,6 +8,7 @@ namespace WebFlug.Controllers
     public class EmailSetupController : Controller
     {
         // GET: Feedback
+        [Authorize(Roles = "User")]
         public ActionResult SendEmail()
         {
             return View();
@@ -15,6 +16,7 @@ namespace WebFlug.Controllers
 
         // Feedback
         [HttpPost]
+        [Authorize(Roles = "User")]
         public ActionResult SendEmail(Email model)
         {
             MailMessage mm = new MailMessage("flugapplication@gmail.com", "naghamamr@gmail.com");
@@ -37,12 +39,14 @@ namespace WebFlug.Controllers
         }
 
         // GET: 
+        [Authorize(Roles = "User")]
         public ActionResult ContactUs()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
         public ActionResult ContactUs(Email model)
         {
             MailMessage mm = new MailMessage("flugapplication@gmail.com", "naghamamr@gmail.com");

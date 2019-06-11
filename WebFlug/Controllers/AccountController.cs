@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -17,6 +20,7 @@ namespace WebFlug.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -72,7 +76,8 @@ namespace WebFlug.Controllers
             {
                 return View(model);
             }
-
+            string email = model.UserName;
+            string pass = model.Password;
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
@@ -84,6 +89,14 @@ namespace WebFlug.Controllers
                         if (user.IsBlocked == true)
                         {
                             return RedirectToAction("blocked", "Home");
+                        }
+                        else if (email == "admin_flugweb@gmail.com" && pass == "@El7el7el7")
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        else if (user.State == "Not Activated")
+                        {
+                            return RedirectToAction("Activation", "Account");
                         }
                         else
                         {
@@ -167,20 +180,39 @@ namespace WebFlug.Controllers
                     UserName = model.UserName,
                     Email = model.Email,
                 };
+
+                user.State = "Not Activated";
+
                 var result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    Random rand = new Random();
+                    int r = rand.Next(1234, 123465);
+                    user.ActivationCode = r;
 
                     UserManager.AddToRole(user.Id, "User");
 
+                    MailMessage msg = new MailMessage("flugapplication@gmail.com", model.Email, "Register", "You Have Registered Successfully " + r);// Sender Email , To Email , Subject , MAil body
+                    msg.IsBodyHtml = true;
+                    SmtpClient sc = new SmtpClient("smtp.gmail.com", 587);
+                    sc.UseDefaultCredentials = false;
+                    NetworkCredential cre = new NetworkCredential("flugapplication@gmail.com", "@El7el7el7");//your mail &  password
+                    sc.Credentials = cre;
+                    sc.EnableSsl = true;
+                    sc.Send(msg);
+
+                    UserManager.AddToRole(user.Id, "User");
+
+                    return RedirectToAction("Login", "Account");
+
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -188,6 +220,44 @@ namespace WebFlug.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        //GET :
+        public ActionResult EditProfile()
+        {
+            var UserID = User.Identity.GetUserId();
+            var user = db.Users.Where(a => a.Id == UserID).SingleOrDefault();
+            EditProfileViewModel Profile = new EditProfileViewModel();
+            Profile.UserName = user.UserName;
+            Profile.Email = user.Email;
+            return View(Profile);
+        }
+
+        //POST :
+        [HttpPost]
+        public ActionResult EditProfile(EditProfileViewModel Profile)
+        {
+            //************ To check that current user password is correct **************//
+
+            var UserID = User.Identity.GetUserId();
+            var CurrentUser = db.Users.Where(a => a.Id == UserID).SingleOrDefault();
+            if (!UserManager.CheckPassword(CurrentUser, Profile.CurrentPassword))
+            {
+                ViewBag.Message = "Current Password is wrong, Please try again";
+            }
+            else
+            {
+                var newPasswordHash = UserManager.PasswordHasher.HashPassword(Profile.NewPassword);
+                CurrentUser.UserName = Profile.UserName;
+                CurrentUser.Email = Profile.Email;
+                //CurrentUser.PasswordHash = newPasswordHash;
+                CurrentUser.PasswordHash = Profile.NewPassword;
+                db.Entry(CurrentUser).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                ViewBag.Message = " Data Updated successfully.";
+            }
+            return View(Profile);
+        }
+
 
         //
         // GET: /Account/ConfirmEmail
@@ -199,7 +269,37 @@ namespace WebFlug.Controllers
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+            if (result.Succeeded)
+            {
+                return View("ConfirmEmail");
+            }
+            AddErrors(result);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Activation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Activation(ApplicationUser user)
+        {
+            if (ModelState.IsValid)
+            {
+                var c = User.Identity.GetUserId();
+                var current = db.Users.Find(c);
+                if (current.ActivationCode == user.ActivationCode)
+                {
+                    current.State = "activated";
+                    db.Entry(current).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View();
         }
 
         //

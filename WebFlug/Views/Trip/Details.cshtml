@@ -62,5 +62,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Trip_Id }) |
+    @Html.ActionLink("Order Offer", "MakeOffer","Offer", new { id = Model.Trip_Id},"") |
     @Html.ActionLink("Back to List", "Index")
 </p>

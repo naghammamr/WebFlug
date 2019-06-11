@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebFlug.Models;
 
@@ -22,6 +20,7 @@ namespace WebFlug.Controllers
         public ActionResult Index()
         {
             var orders = GetOrders();
+            
             return View(orders);
         }
 

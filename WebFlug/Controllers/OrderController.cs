@@ -26,6 +26,7 @@ namespace WebFlug.Controllers
             return orders;
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var orders = GetOrders();
@@ -48,7 +49,8 @@ namespace WebFlug.Controllers
             return result.ToString();
         }
 
-        //show old orders
+        //show My orders
+        [Authorize(Roles = "User")]
         public ActionResult ViewOldOrders()
         {
             var UserId = User.Identity.GetUserId();
@@ -57,6 +59,7 @@ namespace WebFlug.Controllers
         }
 
         // GET: Order/Create
+        [Authorize(Roles = "User")]
         public ActionResult Create()
         {
             return View();
@@ -65,6 +68,7 @@ namespace WebFlug.Controllers
         // POST: Order/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "User")]
         public ActionResult Create(Orders order, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
@@ -125,6 +129,7 @@ namespace WebFlug.Controllers
         }
 
         // GET: Order/Edit/5
+        [Authorize(Roles = "User")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -142,6 +147,7 @@ namespace WebFlug.Controllers
         // POST: Order/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "User")]
         public ActionResult Edit(Orders order, int id, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
@@ -189,6 +195,7 @@ namespace WebFlug.Controllers
         }
 
         //GET :viewmodel
+        [Authorize(Roles = "User")]
         public ActionResult offersOForder(int? id)
         {
             var UserId = User.Identity.GetUserId();

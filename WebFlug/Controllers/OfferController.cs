@@ -22,6 +22,7 @@ namespace WebFlug.Controllers
         }
 
         // GET: MyOffers
+        [Authorize(Roles = "User")]
         public ActionResult MyOffers()
         {
             var UserId = User.Identity.GetUserId();
@@ -30,6 +31,7 @@ namespace WebFlug.Controllers
         }
 
         // GET: Offer/MakeOffer/5
+        [Authorize(Roles = "User")]
         public ActionResult MakeOffer()
         {
             return View();
@@ -38,6 +40,7 @@ namespace WebFlug.Controllers
         // POST: Offer/MakeOffer/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "User")]
         public ActionResult MakeOffer(string TravellerReward, DateTime DeliverDate)
         {
             var userID = User.Identity.GetUserId();
@@ -84,6 +87,7 @@ namespace WebFlug.Controllers
         }
 
         // GET: Offer/Edit/5
+        [Authorize(Roles = "User")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -102,6 +106,7 @@ namespace WebFlug.Controllers
         // POST: Offer/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "User")]
         public ActionResult Edit(Offers offers)
         {
             if (ModelState.IsValid)
@@ -141,6 +146,7 @@ namespace WebFlug.Controllers
 
 
         // GET: Offer/Edit/5
+        [Authorize(Roles = "User")]
         public ActionResult AcceptOffer(int? id)
         {
             if (id == null)
@@ -159,6 +165,7 @@ namespace WebFlug.Controllers
         // POST: Offer/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "User")]
         public ActionResult AcceptOffer(Offers offer)
         {
             var orderID = (int)Session["Order_Id"];
@@ -175,19 +182,8 @@ namespace WebFlug.Controllers
             }
             return View(offer);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

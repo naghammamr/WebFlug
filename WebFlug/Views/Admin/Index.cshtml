@@ -1,51 +1,65 @@
 ﻿@{
     ViewBag.Title = "Admin Home";
-    @Html.Partial("_NavBar");
-    Layout = "~/Views/Shared/_layout.cshtml";
-
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<title>Admin Home</title>
 
+<br />
+<br />
+<div class="bg0 m-t-23 p-b-140" style="display:inline">
+  
+        
+            <!-- Start  -->
+    <section id="mu-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
 
-<!-- Start  -->
-<section id="mu-about-us">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="mu-title">
-                    <span class="mu-subtitle">Manage</span>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="mu-about-us-left">
-                            <h2>
-                                @Html.ActionLink("Categories", "Index", "Categories")
-                            </h2>
-                        </div>
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Manage</span>
                     </div>
 
-                    <div class="col-md-6">
-                        <div class="mu-about-us-right">
-                            <h2>
-                                @Html.ActionLink("Items", "Index", "Items")
-                            </h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mu-about-us-left">
+                                <h2>
+                                    @Html.ActionLink("Orders", "Index", "Order")
+                                </h2>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="col-md-6">
+                            <div class="mu-about-us-right">
+                                <h2>
+                                    @Html.ActionLink("Offers", "Index", "Offer")
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mu-about-us-left">
+                                <h2>
+                                    @Html.ActionLink("Trips", "Index", "Trip")
+                                </h2>
+                            </div>
+                        </div>
 
 
-                    <div class="col-md-6">
-                        <div class="mu-reservation-left">
-                            <h2>
-                                @Html.ActionLink("Users", "showUsers", "Admin")
-                            </h2>
+
+                        <div class="col-md-6">
+                            <div class="mu-reservation-left">
+                                <h2>
+                                    @Html.ActionLink("Users", "showUsers", "Admin")
+                                </h2>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
 
-</section>
-<!-- End -->
+            </div>
+    </section>
+            <!-- End -->
+           
+            </div>
