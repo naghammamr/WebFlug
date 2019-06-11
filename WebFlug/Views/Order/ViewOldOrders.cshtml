@@ -6,6 +6,8 @@
 
 <title>Orders</title>
 <!-- Product -->
+<br />
+<br />
 <div class="bg0 m-t-23 p-b-140" style="display:inline">
     <div class="container">
         <div class="row isotope-grid">
@@ -15,7 +17,7 @@
                     <div>
                         <div class="block2-pic hov-img0">
                             <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ProductImage)" />
-                            <a href="Details.cshtml" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                            <a onclick="location.href='@Url.Action("Details", "Order", new { id =item.Order_Id })'" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                 Quick View
                             </a>
                         </div>
@@ -34,15 +36,6 @@
                                 @Html.ActionLink("Edit Order", "Edit", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" })
                                 @*@Html.ActionLink("Cancel Order", "DeleteConfirmed", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" }, new { htmlAttributes = new { @data_toggle = "modal", @data_target = "#myModal" } })*@
                                 @Html.ActionLink("Cancel Order", "Delete", new { id = item.Order_Id }, new { onclick = "return confirm('Are sure wants to delete?');" })
-                                @if (ViewBag.Message != null)
-                                {
-                                    <script type="text/javascript">
-                                        window.onload = function () {
-                                            alert("@ViewBag.Message");
-                                        };
-                                    </script>
-                                }
-
                             </div>
 
                             <div class="block2-txt-child2 flex-r p-t-3">

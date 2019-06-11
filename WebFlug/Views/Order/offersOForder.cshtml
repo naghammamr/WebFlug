@@ -4,47 +4,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>
-    <b> Prodcut Name :</b> @Model.order.ProductName
-    <br />
-    <b> Order Number :</b> @Model.order.OrderNumber
-    
-</h3>
+<title>@Model.order.ProductName Offer's</title>
+<br />
+<br />
 
-@if (Model.Offers.Count == 0)
-{
-    <text> No offers for this order</text>
-}
-else
-{ 
-    <h3><b>Offers Count : </b>@Model.Offers.Count </h3>
-
-    <table class="table">
-        @foreach (var item in Model.Offers)
+<div class="bg0 m-t-23 p-b-140" style="display:inline">
+    <div class="container">
+        <div class="mu-title">
+            <span class="mu-subtitle">OFFERS FOR</span>
+            <h2>@Model.order.ProductName</h2>
+        </div>
+        
+        @if (Model.Offers.Count == 0)
         {
-        <tr>
-            <td>
-                <b>OfferID </b>:@Html.DisplayFor(modelItem => item.Offer_Id)
-            </td>
-            <td>
-               <b>TravellerReward</b> :@Html.DisplayFor(modelItem => item.TravellerReward)
-            </td>
-            <td>
-                <b> Deliver Date:</b> @Html.DisplayFor(modelItem => item.DeliverDate)
-            </td>
-            <td>
-                <b>Offer Status:</b> @Html.DisplayFor(modelItem => item.OfferSatatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.orders.OrderSatatus)
-            </td>
-
-            <td>
-                @Html.ActionLink("Accept Offer", "AcceptOffer", new { id = item.Offer_Id }) |
-                @Html.ActionLink("Reject Offer", "Index", "")
-            </td>
-        </tr>
+            <text> No offers for this order</text>
         }
+        else
+        {
+            <br />
+            <h3><b>Number Of Offers = </b>@Model.Offers.Count </h3>
+            <table class="table" style="margin:50px;">
+                @foreach (var item in Model.Offers)
+                {
+                    <tr>
+                        <td>
+                            <b>TravellerReward</b> :@Html.DisplayFor(modelItem => item.TravellerReward)
+                        </td>
+                        <td>
+                            <b> Deliver Date:</b> @Html.DisplayFor(modelItem => item.DeliverDate)
+                        </td>
+                        <td>
+                            <b>Offer Status:</b> @Html.DisplayFor(modelItem => item.OfferSatatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.orders.OrderSatatus)
+                        </td>
 
-    </table>
-}
+                        <td>
+                            
+                            @Html.ActionLink("Show this Offer", "AcceptOffer", "Order", new { id = item.Offer_Id }, "") |
+                            @Html.ActionLink("Reject Offer", "ViewOldOrders", "Order")
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>

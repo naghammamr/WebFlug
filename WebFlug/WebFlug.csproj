@@ -204,9 +204,9 @@
     <Compile Include="Migrations\201905101425055_InitialMigration.Designer.cs">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906101519257_d.cs" />
-    <Compile Include="Migrations\201906101519257_d.Designer.cs">
-      <DependentUpon>201906101519257_d.cs</DependentUpon>
+    <Compile Include="Migrations\201906111358480_d.cs" />
+    <Compile Include="Migrations\201906111358480_d.Designer.cs">
+      <DependentUpon>201906111358480_d.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -710,6 +710,8 @@
     <Content Include="Views\Shared\Notifi_Inbox.cshtml" />
     <Content Include="Views\Shared\Order_Offer.cshtml" />
     <Content Include="Views\Order\ToMakeOffer_OrderDetails.cshtml" />
+    <Content Include="Views\Offer\AcceptOffer.cshtml" />
+    <Content Include="Views\Order\AcceptOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -732,8 +734,8 @@
     <EmbeddedResource Include="Migrations\201905101425055_InitialMigration.resx">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906101519257_d.resx">
-      <DependentUpon>201906101519257_d.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906111358480_d.resx">
+      <DependentUpon>201906111358480_d.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

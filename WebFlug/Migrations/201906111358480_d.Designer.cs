@@ -13,7 +13,7 @@ namespace WebFlug.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201906101519257_d"; }
+            get { return "201906111358480_d"; }
         }
         
         string IMigrationMetadata.Source

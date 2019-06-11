@@ -140,21 +140,22 @@
                         {
                             @Html.AntiForgeryToken()
 
-                            <div class="form-actions no-color">
-                                <div class="size-210  flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
-                                    <div class="flex-w w-full p-b-42">
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
-                                                        onclick="location.href='@Url.Action("Delete", "Order")'">
-                                                    Delete
-                                                </button>
-                                            </div>
+                        <div class="form-actions no-color">
+                            <div class="size-210  flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                                <div class="flex-w w-full p-b-42">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
+                                                    onclick="location.href='@Url.Action("Delete", "Order")'">
+                                                Delete
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                                @Html.ActionLink("Back to My Orders", "ViewOldOrders")
                             </div>
+                            @Html.ActionLink("Back to My Orders", "ViewOldOrders") |
+                            @Html.ActionLink("Edit Order", "Edit",new {id= Model.Order_Id})
+                        </div>
                         }
                     </div>
                 </div>

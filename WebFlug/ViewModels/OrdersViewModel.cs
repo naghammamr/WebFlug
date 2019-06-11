@@ -12,6 +12,8 @@ namespace WebFlug.ViewModels
         public Orders order { get; set; }
 
         public List<Offers> Offers { get; set; }
+
+        public Offers offer { get; set; }
         
     }
 }

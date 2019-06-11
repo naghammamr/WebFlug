@@ -8,14 +8,10 @@ namespace WebFlug.Migrations
         public override void Up()
         {
             
-            AlterColumn("dbo.Orders", "ProductWeight", c => c.Int(nullable: false));
-            
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.Orders", "ProductWeight", c => c.Single(nullable: false));
-            
         }
     }
 }

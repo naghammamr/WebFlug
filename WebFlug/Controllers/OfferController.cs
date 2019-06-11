@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using WebFlug.Models;
+using WebFlug.ViewModels;
 
 namespace WebFlug.Controllers
 {
@@ -13,6 +14,7 @@ namespace WebFlug.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Offer
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var offers = db.offers.Include(o => o.orders);
@@ -35,6 +37,7 @@ namespace WebFlug.Controllers
 
         // POST: Offer/MakeOffer/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult MakeOffer(string TravellerReward, DateTime DeliverDate)
         {
             var userID = User.Identity.GetUserId();
@@ -135,6 +138,55 @@ namespace WebFlug.Controllers
             db.SaveChanges();
             return RedirectToAction("MyOffers");
         }
+
+
+        // GET: Offer/Edit/5
+        public ActionResult AcceptOffer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Offers offers = db.offers.Find(id);
+            if (offers == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(offers);
+        }
+
+        // POST: Offer/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AcceptOffer(Offers offer)
+        {
+            var orderID = (int)Session["Order_Id"];
+            var order =new Orders();
+
+            if (ModelState.IsValid)
+            {
+                offer.OfferSatatus = "Accepted";
+                order.OrderSatatus = "InProgress";
+
+                db.Entry(offer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("MyOffers");
+            }
+            return View(offer);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         protected override void Dispose(bool disposing)
         {

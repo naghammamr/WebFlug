@@ -26,13 +26,6 @@ namespace WebFlug.Controllers
             return orders;
         }
 
-        // GET: Offer
-        public IEnumerable<Offers> GetOffers()
-        {
-            var offers = db.offers.ToList();
-            return offers;
-        }
-
         public ActionResult Index()
         {
             var orders = GetOrders();
@@ -115,6 +108,7 @@ namespace WebFlug.Controllers
         }
 
         // GET: Order/Details/5
+        [AllowAnonymous]
         public ActionResult ToMakeOffer_OrderDetails(int? id)
         {
             if (id == null)
@@ -198,10 +192,10 @@ namespace WebFlug.Controllers
         public ActionResult offersOForder(int? id)
         {
             var UserId = User.Identity.GetUserId();
-            var Orders = db.orders.Where(a => a.UserId == UserId).ToList();
+            var Orders = db.orders.Where(a => a.UserId == UserId).Where(x => x.OrderSatatus == "Requested").ToList();
 
             Orders orders = db.orders.Find(id);
-            var offers = db.offers.Where(x => x.Order_Id == id).ToList();
+            var offers = db.offers.Where(x => x.Order_Id == id).Where(x => x.OfferSatatus == "Pending").ToList();
 
             OrdersViewModel viewmodel = new OrdersViewModel
             {
@@ -212,26 +206,58 @@ namespace WebFlug.Controllers
             return View(viewmodel);
         }
 
-        // POST: Order/AcceptOffer/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult offersOForder(Orders order,int orderid,int offerid)
+        public ActionResult AcceptOffer1(int? id)
         {
-            Offers offers = new Offers();
-            order.Order_Id = orderid;
-            offers.Offer_Id = offerid;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Orders order = db.orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+        
+        [HttpPost]
+        public ActionResult AcceptOffer1(Orders order)
+        {
             if (ModelState.IsValid)
             {
-                order.OrderSatatus = "InProgress";
-                offers.OfferSatatus = "Accepted";
-                
-                db.Entry(offers).State = EntityState.Modified;
+                order.OrderSatatus = "Accepted";
                 db.Entry(order).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ViewOldOrders");
+            }
+            return View(order);
+        }
+
+        // GET: Offer/MakeOffer/5
+        public ActionResult AcceptOffer()
+        {
+            return View();
+        }
+
+        // POST: Offer/MakeOffer/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AcceptOffer(OrdersViewModel viewmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                viewmodel.offer.OfferSatatus = "Accepted";
+                viewmodel.order.OrderSatatus = "InProgress";
+
+                db.Entry(viewmodel).State = EntityState.Modified;
 
                 db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index", "Home");
+
+            return View();
         }
+
 
         protected override void Dispose(bool disposing)
         {
