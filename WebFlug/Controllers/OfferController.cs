@@ -20,6 +20,7 @@ namespace WebFlug.Controllers
             return View(offers.ToList());
         }
 
+        [Authorize(Roles = "User")]
         public ActionResult OfferAccepted()
         {
             var UserId = User.Identity.GetUserId();
@@ -27,6 +28,7 @@ namespace WebFlug.Controllers
             return View(offers);
         }
 
+        [Authorize(Roles = "User")]
         public ActionResult ConfirmedOffers()
         {
             var UserId = User.Identity.GetUserId();
@@ -34,6 +36,7 @@ namespace WebFlug.Controllers
             return View(offers);
         }
 
+        [Authorize(Roles = "User")]
         public ActionResult DoneOffers()
         {
             var UserId = User.Identity.GetUserId();

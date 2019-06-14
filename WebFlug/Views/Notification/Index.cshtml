@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<div class="notification-icon" style="margin-top:10px">
+    <span class="glyphicon glyphicon-envelope " style="font-size:25px"></span>
+    <span class="badge" id="ntCnt"></span>
+</div>
+
+<div id="divNotificaion">
+
+</div>
+
+@section scripts{
+
+     <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+
+    <script src="~/signalr/Hubs/"></script>
+
+}
+
+
+
+
+
+<script>
+    $(document).ready(function()
+    {
+        var hub = $.connection.myHub;
+        // Declare a function on the hub hub so the server can invoke it
+        hub.client.displayStatus = function () {
+            debugger
+            getData();
+        };
+
+        $.connection.hub.start();
+        getData();
+        function getData() {
+            var divNotificaion = $('#divNotificaion');
+            $.ajax({
+                url: '/Notification/GetNotification',
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    debugger
+                    data = $.parseJSON(data);
+                    if (data.length > 0) {
+                        divNotificaion.empty();
+                        //// set Count
+                        $('#ntCnt').text(data.length);
+
+                        ///Make notification html
+                        for (var i = 0; i < data.length; i++) {
+                            var notification = '<div class="alert alert-danger alert-dismissable">' +
+                        '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
+                        + data[i].ContactName +
+                    '</div>'
+                            divNotificaion.append(notification);
+                        }
+
+                    }
+                }, error: function(r, e, w) {
+                }
+            });
+        }
+        });
+</script>

@@ -51,7 +51,7 @@ namespace WebFlug.Controllers
         public ActionResult IndexDelivered()
         {
             var UserId = User.Identity.GetUserId();
-            var orders = db.orders.Where(x => x.OrderSatatus == "Delivered" && x.UserId == UserId).ToList();
+            var orders = db.orders.Where(x => x.OrderSatatus == "Recieved" && x.UserId == UserId).ToList();
             return View(orders);
         }
 
