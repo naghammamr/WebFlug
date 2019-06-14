@@ -19,17 +19,39 @@ namespace WebFlug.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Order
-        public IEnumerable<Orders> GetOrders()
+        //Admin
+        // GET: Order Requested
+        public IEnumerable<Orders> GetRequestedOrders()
         {
-            var orders = db.orders.Where(x => x.OrderSatatus == "Requested").ToList();
+            var orders = db.orders.ToList();
             return orders;
         }
 
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            var orders = GetOrders();
+            var orders = GetRequestedOrders();
+            return View(orders);
+        }
+        
+        public ActionResult IndexInProgress()
+        {
+            var UserId = User.Identity.GetUserId();
+            var orders = db.orders.Where(x => x.OrderSatatus == "InProgress" && x.UserId == UserId).ToList();
+            return View(orders);
+        }
+        
+        public ActionResult IndexConfirmed()
+        {
+            var UserId = User.Identity.GetUserId();
+            var orders = db.orders.Where(x => x.OrderSatatus == "Confirmed" && x.UserId == UserId).ToList();
+            return View(orders);
+        }
+
+        public ActionResult IndexDelivered()
+        {
+            var UserId = User.Identity.GetUserId();
+            var orders = db.orders.Where(x => x.OrderSatatus == "Delivered" && x.UserId == UserId).ToList();
             return View(orders);
         }
 
@@ -54,8 +76,8 @@ namespace WebFlug.Controllers
         public ActionResult ViewOldOrders()
         {
             var UserId = User.Identity.GetUserId();
-            var myorders = db.orders.Where(a => a.UserId == UserId);
-            return View(myorders.ToList());
+            var orders = db.orders.Where(x => x.OrderSatatus == "Requested" && x.UserId == UserId).ToList();
+            return View(orders);
         }
 
         // GET: Order/Create
@@ -102,7 +124,7 @@ namespace WebFlug.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var order = GetOrders().SingleOrDefault(o => o.Order_Id == id);
+            var order = GetRequestedOrders().SingleOrDefault(o => o.Order_Id == id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -119,7 +141,7 @@ namespace WebFlug.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var order = GetOrders().SingleOrDefault(o => o.Order_Id == id);
+            var order = GetRequestedOrders().SingleOrDefault(o => o.Order_Id == id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -212,14 +234,14 @@ namespace WebFlug.Controllers
 
             return View(viewmodel);
         }
-        
-        // GET: Offer/MakeOffer/5
+
+        // GET: Offer/AcceptOffer/5
         public ActionResult AcceptOffer()
         {
             return View();
         }
 
-        // POST: Offer/MakeOffer/5
+        // POST: Offer/AcceptOffer/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AcceptOffer(int id)
@@ -249,6 +271,24 @@ namespace WebFlug.Controllers
             return model;
         }
 
+        public ActionResult RecievedOrder()
+        {
+            return View();
+        }
+
+        // POST: Order/ConfirmBuy/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecievedOrder(int id)
+        {
+            var OrderModel = RetriveOrderByID(id);
+            OrderModel.OrderSatatus = "Recieved";
+            UpdateModel<Orders>(OrderModel);
+            db.SaveChanges();
+
+            return RedirectToAction("IndexDelivered");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -257,6 +297,5 @@ namespace WebFlug.Controllers
             }
             base.Dispose(disposing);
         }
-
     }
 }

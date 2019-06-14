@@ -228,7 +228,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Chat.html" />
-    <Content Include="Content\CodeSent.html" />
     <Content Include="Content\css\Chat.css" />
     <Content Include="Content\css\LoginStyle.css" />
     <Content Include="Content\css\main.css" />
@@ -705,6 +704,15 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Trip\VisitorDetails.cshtml" />
+    <Content Include="Views\Order\IndexInProgress.cshtml" />
+    <Content Include="Views\Order\IndexConfirmed.cshtml" />
+    <Content Include="Views\Order\IndexDelivered.cshtml" />
+    <Content Include="Views\Offer\OfferAccepted.cshtml" />
+    <Content Include="Views\Offer\ConfirmedOffers.cshtml" />
+    <Content Include="Views\Offer\DoneOffers.cshtml" />
+    <Content Include="Views\Offer\ConfirmBuy.cshtml" />
+    <Content Include="Views\Offer\DoneDelivering.cshtml" />
+    <Content Include="Views\Order\RecievedOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

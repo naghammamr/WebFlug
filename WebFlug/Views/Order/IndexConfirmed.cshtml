@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebFlug.Models.Orders>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<title>Orders</title>
+<!-- Product -->
+<div class="form-group" style="margin-left:600px">
+    <div class="col-md-offset-2 col-md-10">
+        <h3 class="mtext-111 cl2 p-b-16" style="padding:20px;">
+            Recent Orders
+        </h3>
+        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
+                onclick="location.href='@Url.Action("Create", "Order")'" style="margin-left:20px;">
+            Make a new Order!
+        </button>
+    </div>
+</div>
+<br />
+
+<div class="bg0 m-t-23 p-b-140" style="display:inline">
+    <div class="container">
+        <div class="row isotope-grid">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                    <div>
+                        <div class="block2-pic hov-img0">
+                            <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ProductImage)" />
+                            <a onclick="location.href='@Url.Action("Details", "Order", new { id =item.Order_Id })' " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Quick View
+                            </a>
+                        </div>
+                        <!--start div-->
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            @Html.ActionLink("Recieved", "RecievedOrder", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" })
+                            <div class="block2-txt-child1 flex-col-l ">
+
+                                <p class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                </p>
+                                <span class="stext-105 cl3">
+                                    @Html.DisplayFor(modelItem => item.ProductPrice) L.E
+                                </span>
+                                <p class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    @Html.DisplayFor(modelItem => item.OrderSatatus)
+                                </p>
+
+                                @Html.ActionLink("Edit Order", "Edit", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" })
+                                @Html.ActionLink("Cancel Order", "Delete", new { id = item.Order_Id }, new { onclick = "return confirm('Are sure wants to delete?');" })
+                            </div>
+
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="~/Content/images/icons/icon-heart-01.png" alt="ICON">
+                                </a>
+                            </div>
+                        </div>
+                        <!--end div-->
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

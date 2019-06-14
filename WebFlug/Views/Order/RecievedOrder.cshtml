@@ -1,0 +1,64 @@
+﻿@model WebFlug.ViewModels.OrdersViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<title>Accept Offer</title>
+
+<div class="form-horizontal">
+    <div class="container">
+        @using (Html.BeginForm("RecievedOrder", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <br />
+            <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                Are You Sure you want to confirm purchasing this Offer?
+            </h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.order.ProductName)
+            @Html.HiddenFor(model => model.order.ProductLink)
+            @Html.HiddenFor(model => model.order.ProductPrice)
+            @Html.HiddenFor(model => model.order.ProductQuantity)
+            @Html.HiddenFor(model => model.order.ProductWeight)
+            @Html.HiddenFor(model => model.order.ProductImage)
+
+            @Html.HiddenFor(model => model.order.Order_Id)
+            @Html.HiddenFor(model => model.order.UserId)
+            @Html.HiddenFor(model => model.order.OrderNumber)
+            @Html.HiddenFor(model => model.order.CreationDate)
+
+            @Html.HiddenFor(model => model.order.DeliverDate)
+            @Html.HiddenFor(model => model.order.Deliverfrom)
+            @Html.HiddenFor(model => model.order.DeliverTo)
+            @Html.HiddenFor(model => model.order.AdditionalDetails)
+            @Html.HiddenFor(model => model.order.ProductDetails)
+
+            @Html.HiddenFor(model => model.offer.Offer_Id)
+            @Html.HiddenFor(model => model.offer.Order_Id)
+            @Html.HiddenFor(model => model.offer.UserId)
+            @Html.HiddenFor(model => model.offer.CreationDate)
+            @Html.HiddenFor(model => model.offer.DeliverDate)
+            @Html.HiddenFor(model => model.offer.TravellerReward)
+
+
+
+
+            <div class="form-group" style="margin-left:400px">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
+                        Recieved!
+                    </button>
+                </div>
+            </div>
+        }
+        <div>
+            @Html.ActionLink("Back to My Orders", "ViewOldOrders", "Order")
+        </div>
+    </div>
+</div>
+<br />
+
+

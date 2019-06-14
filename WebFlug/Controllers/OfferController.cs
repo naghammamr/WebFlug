@@ -20,13 +20,34 @@ namespace WebFlug.Controllers
             return View(offers.ToList());
         }
 
+        public ActionResult OfferAccepted()
+        {
+            var UserId = User.Identity.GetUserId();
+            var offers = db.offers.Where(a => a.UserId == UserId && a.OfferSatatus == "Accepted").ToList();
+            return View(offers);
+        }
+
+        public ActionResult ConfirmedOffers()
+        {
+            var UserId = User.Identity.GetUserId();
+            var offers = db.offers.Where(a => a.UserId == UserId && a.OfferSatatus == "Confirmed").ToList();
+            return View(offers);
+        }
+
+        public ActionResult DoneOffers()
+        {
+            var UserId = User.Identity.GetUserId();
+            var offers = db.offers.Where(a => a.UserId == UserId && a.OfferSatatus == "Done").ToList();
+            return View(offers);
+        }
+        
         // GET: MyOffers
         [Authorize(Roles = "User")]
         public ActionResult MyOffers()
         {
             var UserId = User.Identity.GetUserId();
-            var offers = db.offers.Where(a => a.UserId == UserId);
-            return View(offers.ToList());
+            var offers = db.offers.Where(a => a.UserId == UserId && a.OfferSatatus == "Pending").ToList();
+            return View(offers);
         }
 
         // GET: Offer/MakeOffer/5
@@ -142,6 +163,64 @@ namespace WebFlug.Controllers
             db.SaveChanges();
             return RedirectToAction("MyOffers");
         }
+
+        //
+        public Offers RetriveOfferByID(int ID)
+        {
+            var model = db.offers.FirstOrDefault(x => x.Offer_Id == ID);
+            return model;
+        }
+
+        //
+        public Orders RetriveOrderByID(int ID)
+        {
+            var model = db.orders.FirstOrDefault(x => x.Order_Id == ID);
+            return model;
+        }
+
+        // GET: Order/ConfirmBuy/5
+        public ActionResult ConfirmBuy()
+        {
+            return View();
+        }
+
+        // POST: Order/ConfirmBuy/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmBuy(int id)
+        {
+            var Offermodel = RetriveOfferByID(id);
+            Offermodel.OfferSatatus = "Confirmed";
+            UpdateModel<Offers>(Offermodel);
+            db.SaveChanges();
+
+            var OrderModel = RetriveOrderByID(Offermodel.Order_Id);
+            OrderModel.OrderSatatus = "Confirmed";
+            UpdateModel<Orders>(OrderModel);
+            db.SaveChanges();
+
+            return RedirectToAction("MyOffers");
+        }
+
+        //
+        public ActionResult DoneDelivering()
+        {
+            return View();
+        }
+
+        // POST: Order/ConfirmBuy/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DoneDelivering(int id)
+        {
+            var Offermodel = RetriveOfferByID(id);
+            Offermodel.OfferSatatus = "Done";
+            UpdateModel<Offers>(Offermodel);
+            db.SaveChanges();
+            
+            return RedirectToAction("SendEmail","EmailSetup");
+        }
+
         
         protected override void Dispose(bool disposing)
         {

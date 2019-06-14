@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebFlug.Models.Offers>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<title>My Offers</title>
+<!-- Content page -->
+<section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 col-lg-5 ">
+                <div class="p-r-50 p-t-5 p-lr-0-lg">
+                    <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                        My Offers
+                    </h4>
+                </div>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.orders.ProductName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.OfferSatatus)
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.orders.ProductName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OfferSatatus)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Deliverd to buyer", "DoneDelivering", new { id = item.Offer_Id }) |
+                            @Html.ActionLink("Offer Details", "Details", new { id = item.Offer_Id }) |
+                            @Html.ActionLink("Cancel Offer", "Delete", new { id = item.Offer_Id }, new { onclick = "return confirm('Are sure wants to delete?');" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</section>
