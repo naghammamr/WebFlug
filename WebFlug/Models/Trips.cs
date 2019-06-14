@@ -31,6 +31,8 @@ namespace WebFlug.Models
 
         public string TicketPhoto { get; set; }
 
+        public int AvailableKG { get; set; }
+
         public string AdditionalDetails { get; set; }
 
         // Foreign key 

@@ -1,7 +1,7 @@
 ﻿@model WebFlug.Models.Offers
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <title>Offer Details</title>
@@ -16,7 +16,7 @@
                         Offer Details
                     </h4>
 
-                    <div >
+                    <div>
                         <hr />
                         <dl class="dl-horizontal">
                             <dt>
@@ -63,11 +63,10 @@
                     </div>
                     <p>
                         @Html.ActionLink("Edit", "Edit", new { id = Model.Offer_Id }) |
-                        @Html.ActionLink("Accept Offer", "AcceptOffer", new { id = Model.Offer_Id }) |
                         @Html.ActionLink("Back to List", "Index")
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    </section>
+</section>

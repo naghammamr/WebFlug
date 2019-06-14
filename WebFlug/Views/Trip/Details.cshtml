@@ -1,67 +1,89 @@
 ﻿@model WebFlug.Models.Trips
 
-@{
-    ViewBag.Title = "Details";
-}
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
-<h2>Details</h2>
+    <title>TripDetails</title>
+    <br />
+    <section class="sec-product-detail bg0 p-t-65 p-b-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-5 p-b-30">
+                    <div class="p-r-50 p-t-5 p-lr-0-lg">
 
-<div>
-    <h4>Trip</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FromWhere)
-        </dt>
+                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                            Trip Details
+                        </h4>
 
-        <dd>
-            @Html.DisplayFor(model => model.FromWhere)
-        </dd>
+                        <div>
+                            <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ToWhere)
-        </dt>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FromWhere)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ToWhere)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.FromWhere)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartDate)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ToWhere)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepartDate)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ToWhere)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TripCreationDate)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.DepartDate)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TripCreationDate)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.DepartDate)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketPhoto)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.AvailableKG)
+                                </dt>
 
-        <dd>
-            <img src="~/Uploads/@Html.DisplayFor(model => model.TicketPhoto)" class="thumbnail" style="width:200px ; height:150px" />
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.AvailableKG)
+                                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AdditionalDetails)
-        </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TripCreationDate)
+                                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AdditionalDetails)
-        </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TripCreationDate)
+                                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Trip_Id }) |
-    @Html.ActionLink("Order Offer", "MakeOffer","Offer", new { id = Model.Trip_Id},"") |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketPhoto)
+                                </dt>
+
+                                <dd>
+                                    <img src="~/Uploads/@Html.DisplayFor(model => model.TicketPhoto)" class="thumbnail" style="width:200px ; height:150px" />
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.AdditionalDetails)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.AdditionalDetails)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.Trip_Id }) |
+                            @Html.ActionLink("Back to List", "MyTrips")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

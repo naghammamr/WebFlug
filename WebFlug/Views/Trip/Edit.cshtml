@@ -1,74 +1,76 @@
 ﻿@model WebFlug.Models.Trips
 
 @{
-    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<title>EditTrip/flug</title>
+<br />
+<br /><br />
 
-@using (Html.BeginForm("Edit", "Trip", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+    <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+        @using (Html.BeginForm("Edit", "Trip", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Trip_Id)
+            @Html.HiddenFor(model => model.UserId)
+            @Html.HiddenFor(model => model.TripCreationDate)
+            @Html.HiddenFor(model => model.TicketPhoto)
 
-    <div class="form-horizontal">
-        <h4>Trip</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Trip_Id)
-        @Html.HiddenFor(model => model.UserId)
-        @Html.HiddenFor(model => model.TripCreationDate)
-        @Html.HiddenFor(model => model.TicketPhoto)
+            @Html.AntiForgeryToken()
+            <br />
+            <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                Edit Trip
+            </h4>
+            <hr />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FromWhere, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FromWhere, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FromWhere, "", new { @class = "text-danger" })
+            <div class="autocomplete" style="width:300px;">
+                @Html.EditorFor(model => model.FromWhere, new { htmlAttributes = new { placeholder = "From", @class = "form-control" } })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ToWhere, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ToWhere, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ToWhere, "", new { @class = "text-danger" })
+            <div class="flex-w flex-t bor12 p-b-13">
+                <div class="size-208">
+                    <div class="autocomplete" style="width:300px;">
+                        @Html.EditorFor(model => model.ToWhere, new { htmlAttributes = new { placeholder = "To", @class = "form-control" } })
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DepartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DepartDate, "{0:MM/dd/yyyy}", new { @class = "form-control datepicker" })
-                @Html.ValidationMessageFor(model => model.DepartDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TicketPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <img src="~/Uploads/@Html.DisplayFor(model => model.TicketPhoto)" class="thumbnail" style="width:100px" ; height:100px" />
-                <input type="file" name="upload" />
-                @Html.ValidationMessageFor(model => model.TicketPhoto, "", new { @class = "text-danger" })
+            <div class="wrapper">
+                <label for="datepicker">
+                    Pick a Date
+                    @Html.TextBoxFor(model => model.DepartDate, "{0:MM/dd/yyyy}", new { @class = "form-control datepicker" })
+                </label>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AdditionalDetails, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AdditionalDetails, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AdditionalDetails, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.TicketPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <img src="~/Uploads/@Html.DisplayFor(model => model.TicketPhoto)" class="thumbnail" style="width:100px" ; height:100px" />
+                    <input type="file" name="upload" />
+                    @Html.ValidationMessageFor(model => model.TicketPhoto, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.AdditionalDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdditionalDetails, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AdditionalDetails, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+
+        }
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-
+<div>
+    @Html.ActionLink("Back to My Trips", "MyTrips")
+</div>

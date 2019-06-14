@@ -1,16 +1,21 @@
 ﻿@using Microsoft.AspNet.Identity
 @using WebFlug.Models
+
 @if (Request.IsAuthenticated)
 {
     <li>
+        <a href="@Url.Action("Index", "Home")">Home</a>
+    </li>
 
-        <a href=@Url.Content("~/Order/Index.cshtml")>Orders</a>
+    <li>
+        <a href="@Url.Action("ViewOldOrders", "Order")">Orders</a>
     </li>
 
     <li class="label1" data-label1="hot">
-        <a href=("shoping-cart.html")>Offers</a>
+        <a href="@Url.Action("MyOffers", "Offer")">Offers</a>
     </li>
-}
-else
-{
+
+    <li>
+        <a href="@Url.Action("MyTrips", "Trip")">Trips</a>
+    </li>
 }

@@ -1,69 +1,135 @@
 ﻿@model WebFlug.Models.Trips
 
 @{
-    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<title>AddTrip</title>
+<br />
+<br /><br />
 
-<h2>Create</h2>
+<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+    <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+        @using (Html.BeginForm("Create", "Trip", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <br />
+            <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                Add Trip
+            </h4>
+            <hr />
 
-@using (Html.BeginForm("Create", "Trip", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Trip</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.FromWhere, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FromWhere, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FromWhere, "", new { @class = "text-danger" })
+            <div class="autocomplete" style="width:300px;">
+                @Html.EditorFor(model => model.FromWhere, new { htmlAttributes = new { placeholder = "From", @class = "form-control" } })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ToWhere, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ToWhere, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ToWhere, "", new { @class = "text-danger" })
+            <div class="flex-w flex-t bor12 p-b-13">
+                <div class="size-208">
+                    <div class="autocomplete" style="width:300px;">
+                        @Html.EditorFor(model => model.ToWhere, new { htmlAttributes = new { placeholder = "To", @class = "form-control" } })
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DepartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DepartDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DepartDate, "", new { @class = "text-danger" })
+            <div class="wrapper">
+                <label for="datepicker">
+                    Pick a Date
+                    @Html.EditorFor(model => model.DepartDate, new { htmlAttributes = new { @class = "form-control" } })
+                </label>
             </div>
-        </div>
 
+            <div class="bor8 m-b-20 how-pos4-parent">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TicketPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="upload" />
-                @Html.ValidationMessageFor(model => model.TicketPhoto, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.AvailableKG, new { htmlAttributes = new { placeholder = "Available package in KG", @class = "stext-111 cl2 plh3 size-116 p-l-62 p-r-30" } })
             </div>
-        </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AdditionalDetails, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AdditionalDetails, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AdditionalDetails, "", new { @class = "text-danger" })
+            <div class="bor8 m-b-30">
+                @Html.EditorFor(model => model.AdditionalDetails, new { htmlAttributes = new { placeholder = "Any notes?", @class = "stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" } })
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="size-204 respon6-next">
+                Ticket Photo:
+                <div class="rs1-select2 bor8 bg0">
+                    <div>
+                        <input type="file" name="upload" />
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div class="form-group" style="margin-left:100px; margin-top:30px">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
+                        Add Trip
+                    </button>
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.ActionLink("Back to Trips", "Index")
+            </div>
+
+        }
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+<style>
+    /*country style*/
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font: 16px Arial;
+    }
+
+    .autocomplete {
+        /*the container must be positioned relative:*/
+        position: relative;
+        display: inline-block;
+    }
+
+    input {
+        border: 1px solid transparent;
+        background-color: #f1f1f1;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+        input[type=text] {
+            background-color: #f1f1f1;
+            width: 100%;
+        }
+
+
+
+    .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+    }
+
+        .autocomplete-items div {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+            .autocomplete-items div:hover {
+                /*when hovering an item:*/
+                background-color: #e9e9e9;
+            }
+
+    .autocomplete-active {
+        /*when navigating through the items using the arrow keys:*/
+        background-color: DodgerBlue !important;
+        color: #ffffff;
+    }
+</style>

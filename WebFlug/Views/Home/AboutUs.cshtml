@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "AboutUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<title>Flug/About us</title>
+
+<!-- Title page -->
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image:url(/Content/images/aboutus.jpg);">
+    <h2 class="ltext-105 cl0 txt-center">
+        About
+    </h2>
+</section>
+
+
+<!-- Content page -->
+<section class="bg0 p-t-75 p-b-120">
+    <div class="container">
+        <div class="row p-b-148">
+            <div class="col-md-7 col-lg-8">
+                <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Our Story
+                    </h3>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        Inspired by our passion for travel, we created Flug, a trusted peer-to-peer community marketplace connecting shoppers and travelers all around the world. With Flug, shoppers gain access to the products they love, want and can’t get otherwise with a little help from travelers heading their way.
+
+                        Whether craving macarons from Paris or the latest gadget from New York, Flug offers a faster and friendlier way to shop the globe, and at the same time, empowers travelers to monetize extra space in their suitcases.
+                    </p>
+
+
+
+
+                </div>
+            </div>
+
+            <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+                <div class="how-bor1 ">
+                    <div class="hov-img0">
+                        <img src=@Url.Content("/Content/images/about.jpg") alt="IMG">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
+                <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Our Vision
+                    </h3>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        At Flug, our vision is to break down borders so that everyone can enjoy their favorite products, no matter what city they call home.
+                    </p>
+
+                    <div class="bor16 p-l-29 p-b-9 m-t-22">
+                        <p class="stext-114 cl6 p-r-40 p-b-11">
+                            Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
+                        </p>
+
+                        <span class="stext-111 cl8">
+                            - Steve Job’s
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
+                <div class="how-bor2">
+                    <div class="hov-img0">
+                        <img src=@Url.Content("/Content/images/about2.jpg") alt="IMG">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <style>
+            .wrapper {
+                align-content: center;
+            }
+
+            .image--cover {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                margin: 20px;
+                object-fit: cover;
+                object-position: center right;
+            }
+        </style>
+
+        <div class="wrapper">
+            <h2 class="mtext-111 cl2 p-b-16" style="padding:20px;">
+                Founders
+            </h2>
+            <img src=@Url.Content("/Content/images/nagham.jpg") alt="" class="image--cover" />
+
+
+            <img src=@Url.Content("/Content/images/nada2.jpg") class="image--cover">
+
+            <img src=@Url.Content("/Content/images/enji.jpg") alt="" class="image--cover" />
+
+            <img src=@Url.Content("/Content/images/omar.jpg") alt="" class="image--cover" />
+            <img src=@Url.Content("/Content/images/magdy.jpg") alt="" class="image--cover" />
+
+        </div>
+    </div>
+    
+</section>
+

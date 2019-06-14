@@ -55,7 +55,7 @@ namespace WebFlug.Controllers
 
                 db.trips.Add(trip);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyTrips");
               }
 
               return View(trip);
@@ -71,6 +71,21 @@ namespace WebFlug.Controllers
 
         // GET: Trip/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Trips trip = db.trips.Find(id);
+            if (trip == null)
+            {
+                return HttpNotFound();
+            }
+            return View(trip);
+        }
+
+        // GET: Trip/Details/5
+        public ActionResult VisitorDetails(int? id)
         {
             if (id == null)
             {
@@ -115,7 +130,7 @@ namespace WebFlug.Controllers
                 trip.Trip_Id = id;                
                 db.Entry(trip).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyTrips");
             }
             return View(trip);
         }
@@ -143,7 +158,7 @@ namespace WebFlug.Controllers
             Trips trip = db.trips.Find(id);
             db.trips.Remove(trip);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("MyTrips");
         }
 
         protected override void Dispose(bool disposing)

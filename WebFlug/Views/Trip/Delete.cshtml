@@ -1,72 +1,89 @@
 ﻿@model WebFlug.Models.Trips
 
 @{
-    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<title>Delete</title>
+<br />
+<section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-5 p-b-30">
+                <div class="p-r-50 p-t-5 p-lr-0-lg">
 
-<h2>Delete</h2>
+                    <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                        Are You sure you want delete this offer?
+                    </h4>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Trip</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FromWhere)
-        </dt>
+                    <div>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.FromWhere)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FromWhere)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.FromWhere)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ToWhere)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ToWhere)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ToWhere)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.ToWhere)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartDate)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DepartDate)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepartDate)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.DepartDate)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TripCreationDate)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TripCreationDate)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TripCreationDate)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.TripCreationDate)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketPhoto)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TicketPhoto)
+                            </dt>
 
-        <dd>
-            <img src="~/Uploads/@Html.DisplayFor(modelItem => Model.TicketPhoto)" class="thumbnail" style="width:100px" ; height:100px" />
-        </dd>
+                            <dd>
+                                <img src="~/Uploads/@Html.DisplayFor(modelItem => Model.TicketPhoto)" class="thumbnail" style="width:100px" ; height:100px" />
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AdditionalDetails)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.AdditionalDetails)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AdditionalDetails)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.AdditionalDetails)
+                            </dd>
 
-    </dl>
+                        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                            <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                <input type="submit" value="Delete"  /> 
+                            </div>
+
+                            <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                @Html.ActionLink("Back to List", "MyTrips")
+                            </div>
+                            
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-    }
-</div>
+    </div>
+</section>

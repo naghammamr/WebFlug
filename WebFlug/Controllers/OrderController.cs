@@ -212,34 +212,7 @@ namespace WebFlug.Controllers
 
             return View(viewmodel);
         }
-
-        public ActionResult AcceptOffer1(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Orders order = db.orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
         
-        [HttpPost]
-        public ActionResult AcceptOffer1(Orders order)
-        {
-            if (ModelState.IsValid)
-            {
-                order.OrderSatatus = "Accepted";
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("ViewOldOrders");
-            }
-            return View(order);
-        }
-
         // GET: Offer/MakeOffer/5
         public ActionResult AcceptOffer()
         {
@@ -249,22 +222,32 @@ namespace WebFlug.Controllers
         // POST: Offer/MakeOffer/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AcceptOffer(OrdersViewModel viewmodel)
+        public ActionResult AcceptOffer(int id)
         {
-            if (ModelState.IsValid)
-            {
-                viewmodel.offer.OfferSatatus = "Accepted";
-                viewmodel.order.OrderSatatus = "InProgress";
+            var Offermodel = RetriveOfferByID(id);
+            Offermodel.OfferSatatus = "Accepted";
+            UpdateModel<Offers>(Offermodel);
+            db.SaveChanges();
 
-                db.Entry(viewmodel).State = EntityState.Modified;
+            var OrderModel = RetriveOrderByID(Offermodel.Order_Id);
+            OrderModel.OrderSatatus = "InProgress";
+            UpdateModel<Orders>(OrderModel);
+            db.SaveChanges();
 
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View();
+            return RedirectToAction("ViewOldOrders");
         }
 
+        public Offers RetriveOfferByID(int ID)
+        {
+            var model = db.offers.FirstOrDefault(x => x.Offer_Id == ID);
+            return model;
+        }
+
+        public Orders RetriveOrderByID(int ID)
+        {
+            var model = db.orders.FirstOrDefault(x => x.Order_Id == ID);
+            return model;
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -1,65 +1,65 @@
 ﻿@model IEnumerable<WebFlug.Models.Trips>
 
 @{
-    ViewBag.Title = "Index";
-    @Html.Partial("_NavBar")
-
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<title>FLUG/Trips</title>
 
 @foreach (var item in Model)
 {
     <!-- Shoping Cart -->
     <form class="bg0 p-t-75 p-b-85">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-                    <div class="m-l-25 m-r--38 m-lr-0-xl">
-                        <div class="wrap-table-shopping-cart">
 
-                            <table class="table-shopping-cart">
-                                <tr class="table_head">
-                                    <th class="column-1">Your Trips</th>
-                                    <th class="column-2"></th>
-                                    <th class="column-3"></th>
-                                    <th class="column-4"></th>
-                                    <th class="column-5"></th>
-                                </tr>
+            <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+                <div class="m-l-25 m-r--38 m-lr-0-xl">
+                    <div class="wrap-table-shopping-cart">
 
-                                <tr class="table_row">
-                                    <td class="column-1">
+                        <table class="table-shopping-cart">
+                            <tr class="table_head">
+                                <th class="column-1">Your Trips</th>
+                                <th class="column-2"></th>
+                                <th class="column-3"></th>
+                                <th class="column-4"></th>
+                                <th class="column-5"></th>
+                            </tr>
 
-                                        <div >
-                                            <h1>@Html.DisplayFor(modelItem => item.FromWhere)</h1>
-                                        </div>
+                            <tr class="table_row">
+                                <td class="column-1">
 
-                                        <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                            Edit trip
-                                        </div>
-                                    </td>
-                                    <td class="column-2"> </td>
-                                    <td class="column-3">TO </td>
-                                    <td class="column-4"></td>
-                                    <td class="column-5">
+                                    <div>
+                                        <h1>@Html.DisplayFor(modelItem => item.FromWhere)</h1>
+                                    </div>
 
-                                        <div >
-                                            <h1>@Html.DisplayFor(modelItem => item.ToWhere)</h1>
-                                        </div>
-                                        <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                            Cancel trip
-                                        </div>
-                                    </td>
-                                </tr>
+                                </td>
 
-                            </table>
-                        </div>
+                                <td class="column-2"> </td>
+                                <td class="column-3">TO </td>
+                                <td class="column-4"></td>
+                                <td class="column-5">
+                                    <br /><br />
+                                    <div>
+                                        <h1>@Html.DisplayFor(modelItem => item.ToWhere)</h1>
+                                    </div>
 
+                                    <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+                                        @Html.ActionLink("Trip Details", "VisitorDetails", new { id = item.Trip_Id })
+                                    </div>
+                                </td>
+
+                                <td class="column-2"> </td>
+                                <td class="column-4"></td>
+                                <td class="column-5">
+                                    <div>
+                                        <h1>@Html.DisplayFor(modelItem => item.DepartDate)</h1>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </form>

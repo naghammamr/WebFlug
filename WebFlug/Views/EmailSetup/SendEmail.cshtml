@@ -3,39 +3,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<title>FeedBack</title>
+
+<title>Flug/Feedback</title>
 
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/Content/images/bg-01.jpg');">
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/Content/images/aboutus.jpg');">
     <h2 class="ltext-105 cl0 txt-center">
         FeedBack
     </h2>
 </section>
 
-
 <!-- Content page -->
+<section class="bg0 p-t-104 p-b-116">
+    <div style="margin-left:500px">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                @using (Html.BeginForm("SendEmail", "EmailSetup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        Let Us Know Your Feedback!
+                    </h4>
 
-    <section class="bg0 p-t-104 p-b-116">
-        <div style="margin-left:500px">
-            <div class="flex-w flex-tr">
-                <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                    @using (Html.BeginForm("SendEmail", "EmailSetup", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        <h4 class="mtext-105 cl2 txt-center p-b-30">
-                            Let Us Know Your Feedback!
-                        </h4>
-
-                        <div class="bor8 m-b-30">
-                            @Html.TextAreaFor(model => model.Body, new { @class = "stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25", placeholder = "Happy To Hear Your Feedback" })
-                        </div>
-
-                        <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-                            Submit
-                        </button>
-                    }
+                    <div class="bor8 m-b-30">
+                        @Html.TextAreaFor(model => model.Body, new { @class = "stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25", placeholder = "Happy To Hear Your Feedback" })
                     </div>
 
-               
+                    <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        Submit
+                    </button>
+                }
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
+

@@ -35,18 +35,18 @@
     <!--===============================================================================================-->
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
+
 </head>
 <body class="animsition">
     <!-- Header -->
     <header class="header-v4">
-
         <!-- Header desktop -->
         <div class="container-menu-desktop">
             <!-- Topbar -->
             <div class="top-bar">
                 <div class="content-topbar flex-sb-m h-full container">
                     <div class="left-top-bar" style="color:white">
-
+                        Enjoy travelling and shopping with us!
                     </div>
 
                     <div class="right-top-barr" style="display:inline;">
@@ -55,9 +55,8 @@
                 </div>
             </div>
             <div class="wrap-menu-desktop how-shadow1">
-
                 <nav class="limiter-menu-desktop p-l-45">
-
+                    
                     <!-- Logo desktop -->
                     <a href="#" class="logo">
                         <img src=@Url.Content("/Content/images/icons/fluglogo.png") alt="IMG-LOGO">
@@ -66,18 +65,15 @@
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <a href="index.cshtml">Home</a>
-
+                            
                             @Html.Partial("Order_Offer")
 
-
-
                             <li>
-                                <a href=@Url.Content("/Content/about.html")>About</a>
+                                <a href="@Url.Action("AboutUs", "Home")">About</a>
                             </li>
 
                             <li>
-                                <a href=@Url.Content("/Content/contact.html")>Contact</a>
+                                <a href="@Url.Action("ContactUs", "EmailSetup")">Contact</a>
                             </li>
 
 
@@ -305,8 +301,8 @@
                         </li>
 
                         <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Returns
+                            <a href="@Url.Action("SendEmail", "EmailSetup")" class="stext-107 cl7 hov-cl1 trans-04">
+                                Feedback
                             </a>
                         </li>
 

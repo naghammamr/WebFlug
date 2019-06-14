@@ -204,13 +204,9 @@
     <Compile Include="Migrations\201905101425055_InitialMigration.Designer.cs">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906111358480_d.cs" />
-    <Compile Include="Migrations\201906111358480_d.Designer.cs">
-      <DependentUpon>201906111358480_d.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906112048547_verify.cs" />
-    <Compile Include="Migrations\201906112048547_verify.Designer.cs">
-      <DependentUpon>201906112048547_verify.cs</DependentUpon>
+    <Compile Include="Migrations\201906141146494_trip.cs" />
+    <Compile Include="Migrations\201906141146494_trip.Designer.cs">
+      <DependentUpon>201906141146494_trip.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -227,7 +223,6 @@
     <Compile Include="ViewModels\OrdersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\about.html" />
     <Content Include="Content\AddTrip.html" />
     <Content Include="Content\AddTripDetails.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -236,15 +231,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Chat.html" />
     <Content Include="Content\CodeSent.html" />
-    <Content Include="Content\contact.html" />
-    <Content Include="Content\createOrder.html" />
     <Content Include="Content\css\Chat.css" />
     <Content Include="Content\css\LoginStyle.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\nunito-font.css" />
     <Content Include="Content\css\RegistrationStyle.css" />
     <Content Include="Content\css\util.css" />
-    <Content Include="Content\EditProfile.html" />
     <Content Include="Content\fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="Content\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
@@ -277,7 +269,6 @@
     <Content Include="Content\fonts\Poppins\roboto-condensed-v16-latin-italic.svg" />
     <Content Include="Content\fonts\Poppins\roboto-condensed-v16-latin-regular.svg" />
     <Content Include="Content\ForgetPassword.html" />
-    <Content Include="Content\HomeLogin.html" />
     <Content Include="Content\images\about-01.jpg" />
     <Content Include="Content\images\about-02.jpg" />
     <Content Include="Content\images\avatar-01.jpg" />
@@ -333,6 +324,7 @@
     <Content Include="Content\images\item-cart-04.jpg" />
     <Content Include="Content\images\item-cart-05.jpg" />
     <Content Include="Content\images\nada.jpg" />
+    <Content Include="Content\images\nagham.jpg" />
     <Content Include="Content\images\paris1.jpg" />
     <Content Include="Content\images\plane1.jpg" />
     <Content Include="Content\images\product-01.jpg" />
@@ -374,8 +366,6 @@
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\map-custom.js" />
     <Content Include="Content\js\slick-custom.js" />
-    <Content Include="Content\OrderDetail.html" />
-    <Content Include="Content\RegistrationForm.html" />
     <Content Include="Content\Trips.html" />
     <Content Include="Content\vendor\animate\animate.css" />
     <Content Include="Content\vendor\animsition\css\animsition.css" />
@@ -445,7 +435,6 @@
     <Content Include="Content\vendor\slick\slick.js" />
     <Content Include="Content\vendor\slick\slick.min.js" />
     <Content Include="Content\vendor\sweetalert\sweetalert.min.js" />
-    <Content Include="Content\ViewProfile.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -714,11 +703,12 @@
     <Content Include="Views\Shared\Notifi_Inbox.cshtml" />
     <Content Include="Views\Shared\Order_Offer.cshtml" />
     <Content Include="Views\Order\ToMakeOffer_OrderDetails.cshtml" />
-    <Content Include="Views\Offer\AcceptOffer.cshtml" />
     <Content Include="Views\Order\AcceptOffer.cshtml" />
     <Content Include="Views\Account\Activation.cshtml" />
     <Content Include="Views\Account\EditProfile.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Trip\VisitorDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -741,11 +731,8 @@
     <EmbeddedResource Include="Migrations\201905101425055_InitialMigration.resx">
       <DependentUpon>201905101425055_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906111358480_d.resx">
-      <DependentUpon>201906111358480_d.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906112048547_verify.resx">
-      <DependentUpon>201906112048547_verify.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906141146494_trip.resx">
+      <DependentUpon>201906141146494_trip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
