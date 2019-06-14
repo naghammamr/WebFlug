@@ -1,44 +1,47 @@
-﻿
-@model IEnumerable<WebFlug.Models.Orders>
+﻿@model IEnumerable<WebFlug.Models.Orders>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<title>Orders</title>
+<title>InprogressOrders</title>
 <!-- Product -->
-<div class="form-group" style="margin-left:600px">
-    <div>
-        <h3 class="mtext-111 cl2 p-b-16" style="padding:20px;">
-            Confirmed Orders!
+<div class="bg0 m-t-23 p-b-140" style="display:inline; padding:20px;">
+    <div class="container">
+
+        <h3 class="mtext-111 cl2 p-b-16" style="padding:20px; margin-left:400px;">
+            Inprogress Orders!
         </h3>
 
-        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
-                onclick="location.href='@Url.Action("Create", "Order")'" style="margin-left:25px;">
-            Make a new order!
-        </button>
+        <div class="row isotope-grid">
 
-        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
-                onclick="location.href='@Url.Action("ViewOldOrders", "Order")'" style="margin-left:35px;">
-            Requested!
-        </button>
+            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
+                    onclick="location.href='@Url.Action("Create", "Order")'" style="margin-left:200px;">
+                Make a new order!
+            </button>
 
-        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
-                onclick="location.href='@Url.Action("IndexConfirmed", "Order")'" style="margin-left:35px;">
-            Confirmed!
-        </button>
+            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
+                    onclick="location.href='@Url.Action("ViewOldOrders", "Order")'" style="margin-left:10px;">
+                Requested!
+            </button>
 
-        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
-                onclick="location.href='@Url.Action("IndexDelivered", "Order")'" style="margin-left:30px;">
-            Recieved!
-        </button>
+            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
+                    onclick="location.href='@Url.Action("IndexConfirmed", "Order")'" style="margin-left:10px;">
+                Confirmed!
+            </button>
+
+            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"
+                    onclick="location.href='@Url.Action("IndexDelivered", "Order")'" style="margin-left:10px;">
+                Recieved!
+            </button>
 
 
 
 
+        </div>
     </div>
 </div>
-<br />
+<br /><br /><br /><br /><br /><br /><br />
 
 
 <div class="bg0 m-t-23 p-b-140" style="display:inline">
