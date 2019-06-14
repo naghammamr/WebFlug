@@ -6,6 +6,18 @@
 
 <title>FLUG/Trips</title>
 
+<div class="form-group" style="margin-left:600px">
+    <div class="col-md-offset-2 col-md-10">
+        <h3 class="mtext-111 cl2 p-b-16" style="padding:20px;">
+            Recent Trips
+        </h3>
+        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
+                onclick="location.href='@Url.Action("Create", "Trip")'" style="margin-left:20px;">
+            Add a new Trip!
+        </button>
+    </div>
+</div>
+
 @foreach (var item in Model)
 {
     <!-- Shoping Cart -->

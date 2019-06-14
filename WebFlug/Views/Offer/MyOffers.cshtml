@@ -22,18 +22,11 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.orders.ProductName)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.TravellerReward)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.CreationDate)
-                            </th>
+                            
                             <th>
                                 @Html.DisplayNameFor(model => model.OfferSatatus)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.DeliverDate)
-                            </th>
+                            
                             <th></th>
                         </tr>
 
@@ -43,18 +36,11 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.orders.ProductName)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TravellerReward)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CreationDate)
-                                </td>
+                            
                                 <td>
                                     @Html.DisplayFor(modelItem => item.OfferSatatus)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DeliverDate)
-                                </td>
+                                
                                 <td>
                                     @Html.ActionLink("Edit Offer", "Edit", new { id = item.Offer_Id }) |
                                     @Html.ActionLink("Offer Details", "Details", new { id = item.Offer_Id }) |

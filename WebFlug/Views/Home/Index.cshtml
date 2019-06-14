@@ -35,11 +35,12 @@
                             }
                         </style>
                         <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600" id="ordertravel">
-                            <a href="~/Content/createOrder.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                            <a onclick="location.href='@Url.Action("Create", "Order")'" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                 Create Order
                             </a>
-                            <a href="~/Content/AddTrip.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Travel with flug
+
+                            <a onclick="location.href='@Url.Action("Create", "Trip")'" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Add a Trip!
                             </a>
                         </div>
                     </div>
@@ -60,12 +61,12 @@
                         </div>
 
                         <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600" id="ordertravel">
-                            <a href="~/Content/createOrder.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                            <a onclick="location.href='@Url.Action("Create", "Order")'"  class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                 Create Order
                             </a>
 
-                            <a href="~/Content/AddTrip.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Travel with flug
+                            <a onclick="location.href='@Url.Action("Create", "Trip")'" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Add a Trip!
                             </a>
                         </div>
                     </div>
@@ -85,12 +86,12 @@
                             </h2>
                         </div>
                         <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600" id="ordertravel">
-                            <a href="~/Content/createOrder.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                            <a onclick="location.href='@Url.Action("Create", "Order")'" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                 Create Order
                             </a>
 
-                            <a href="~/Content/AddTrip.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Travel with flug
+                            <a onclick="location.href='@Url.Action("Create", "Trip")'" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Add a Trip!
                             </a>
                         </div>
                     </div>
@@ -101,9 +102,20 @@
 </section>
 <!-- Orders -->
 <div>
-    <h3 class="mtext-111 cl2 p-b-16" style="padding:20px;">
-        Recent Orders
-    </h3>
+
+    <div class="form-group" style="margin-left:600px">
+        <div class="col-md-offset-2 col-md-10">
+            <h3 class="mtext-111 cl2 p-b-16" style="padding:20px;">
+                Recent Orders
+            </h3>
+            @*<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
+                    onclick="location.href='@Url.Action("Create", "Order")'" style="margin-left:20px;">
+                Make a new Order!
+            </button>*@
+        </div>
+    </div>
+    <br />
+
 </div>
 <div class="bg0 m-t-23 p-b-140" style="display:inline; padding:20px;">
     <div class="container">
@@ -116,7 +128,7 @@
                             <img src="~/Uploads/@Html.DisplayFor(modelItem => item.ProductImage)" @*style="width:300px; height:300px;"*@/>
                             
                             <a onclick="location.href='@Url.Action("ToMakeOffer_OrderDetails", "Order", new { id =item.Order_Id })'" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Show Details
+                                Make Offer
                             </a>
 
                         </div>

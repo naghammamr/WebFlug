@@ -6,8 +6,19 @@
 
 <title>Orders</title>
 <!-- Product -->
+<div class="form-group" style="margin-left:600px">
+    <div class="col-md-offset-2 col-md-10">
+        <h3 class="mtext-111 cl2 p-b-16" style="padding:20px;">
+            Recent Orders
+        </h3>
+        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "
+                onclick="location.href='@Url.Action("Create", "Order")'" style="margin-left:20px;">
+            Make a new Order!
+        </button>
+    </div>
+</div>
 <br />
-<br />
+
 <div class="bg0 m-t-23 p-b-140" style="display:inline">
     <div class="container">
         <div class="row isotope-grid">
@@ -24,7 +35,7 @@
                         </div>
                         <!--start div-->
                         <div class="block2-txt flex-w flex-t p-t-14">
-                            @Html.ActionLink("Show Details", "Details", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" })
+                            @Html.ActionLink("Show Offers", "Details", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" })
                             <div class="block2-txt-child1 flex-col-l ">
 
                                 <p class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
@@ -33,9 +44,11 @@
                                 <span class="stext-105 cl3">
                                     @Html.DisplayFor(modelItem => item.ProductPrice) L.E
                                 </span>
+                                <p class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    @Html.DisplayFor(modelItem => item.OrderSatatus)
+                                </p>
 
                                 @Html.ActionLink("Edit Order", "Edit", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" })
-                                @*@Html.ActionLink("Cancel Order", "DeleteConfirmed", new { id = item.Order_Id, @class = "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" }, new { htmlAttributes = new { @data_toggle = "modal", @data_target = "#myModal" } })*@
                                 @Html.ActionLink("Cancel Order", "Delete", new { id = item.Order_Id }, new { onclick = "return confirm('Are sure wants to delete?');" })
                             </div>
 
@@ -48,8 +61,6 @@
                         <!--end div-->
                     </div>
                 </div>
-
-
             }
 
         </div>

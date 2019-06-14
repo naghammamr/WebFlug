@@ -223,8 +223,6 @@
     <Compile Include="ViewModels\OrdersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\AddTrip.html" />
-    <Content Include="Content\AddTripDetails.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -268,7 +266,6 @@
     <Content Include="Content\fonts\Poppins\roboto-condensed-v16-latin-700italic.svg" />
     <Content Include="Content\fonts\Poppins\roboto-condensed-v16-latin-italic.svg" />
     <Content Include="Content\fonts\Poppins\roboto-condensed-v16-latin-regular.svg" />
-    <Content Include="Content\ForgetPassword.html" />
     <Content Include="Content\images\about-01.jpg" />
     <Content Include="Content\images\about-02.jpg" />
     <Content Include="Content\images\avatar-01.jpg" />
@@ -366,7 +363,6 @@
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\map-custom.js" />
     <Content Include="Content\js\slick-custom.js" />
-    <Content Include="Content\Trips.html" />
     <Content Include="Content\vendor\animate\animate.css" />
     <Content Include="Content\vendor\animsition\css\animsition.css" />
     <Content Include="Content\vendor\animsition\css\animsition.min.css" />
