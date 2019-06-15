@@ -88,7 +88,7 @@ namespace WebFlug.Controllers
 
                 db.offers.Add(offer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View();
